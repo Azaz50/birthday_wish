@@ -43,12 +43,13 @@
     .glow { filter: blur(6px); opacity:.6; animation: glow 1.5s ease-in-out infinite alternate; }
     @keyframes glow { from{opacity:.35} to{opacity:.75} }
 
-    .balloon{ position:absolute; bottom:-120px; font-size: 44px; filter: drop-shadow(0 6px 8px rgba(0,0,0,.2)); animation: float 12s linear infinite; }
-    .b1{ left:4%; animation-duration: 13s}
-    .b2{ left:20%; animation-duration: 16s}
-    .b3{ left:38%; animation-duration: 14s}
-    .b4{ left:62%; animation-duration: 15s}
-    .b5{ left:80%; animation-duration: 18s}
+    .balloon{ position:absolute; bottom:-120px; font-size: 44px; filter: drop-shadow(0 6px 8px rgba(0,0,0,.2)); animation: float 8s linear infinite; }
+    .b1{ left:4%; animation-duration: 8s}
+    .b2{ left:20%; animation-duration: 10s}
+    .b3{ left:38%; animation-duration: 11s}
+    .b4{ left:62%; animation-duration: 12s}
+    .b5{ left:80%; animation-duration: 13s}
+    .b6{ left:80%; animation-duration: 13s}
     @keyframes float { 0%{ transform: translateY(0) } 100%{ transform: translateY(-120vh) } }
 
     .controls{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
@@ -87,6 +88,7 @@
         <div class="balloon b3" aria-hidden="true">🎈</div>
         <div class="balloon b4" aria-hidden="true">🎈</div>
         <div class="balloon b5" aria-hidden="true">🎈</div>
+        <div class="balloon b6" aria-hidden="true">🎈</div>
 
         <!-- Cake (SVG) -->
         <svg class="cake" viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg" aria-label="Birthday cake">
@@ -128,7 +130,7 @@
     <section class="message card">
       <h2 style="margin-top:0">Dear Neha 🌸</h2>
       <div class="type" id="typebox" aria-live="polite"></div>
-      <span class="tag">from: Azaz — to: my Gulabo Rani 💞</span>
+      <span class="tag">from: Your Love — to: my Gulabo Rani 💞</span>
     </section>
   </main>
 
@@ -325,6 +327,31 @@
     window.addEventListener('DOMContentLoaded', () => {
       playMelody();
     });
+
+    // ===== Shayari cycling =====
+    const shayariList = [
+      `Teri muskaan meri duaon ka asar hai,\nTere bina mera dil kuch be-asar hai.\nKhuda kare har janam tujhe paau main,\nMeri Gulabo Rani, tu meri duniya ka safar hai.\n🎂💐🎶\nHappy Birthday My Gulabo Rani`,
+      `Zindagi tere pyaar se roshan hai,\nDil ki dhadkan teri tasveer hai.\nTujhe paake lagta hai mujhe,\nJaise meri duniya ek khubsurat taqdeer hai. 🎂✨`,
+      `Tu meri duaon ka noor hai,\nTu mere khwabon ka surur hai.\nMeri Gulabo Rani, tujhe paake lagta hai,\nJaise meri mohabbat ka raboor hai. 💖`
+    ];
+    let shayariIndex = 0;
+    function typeShayari(msg) {
+      let i = 0;
+      box.textContent = '';
+      function type() {
+        if(i <= msg.length){
+          box.textContent = msg.slice(0,i++);
+          setTimeout(type, 24);
+        }
+      }
+      type();
+    }
+    function cycleShayari() {
+      typeShayari(shayariList[shayariIndex]);
+      shayariIndex = (shayariIndex + 1) % shayariList.length;
+      setTimeout(cycleShayari, 12000); // change every 6 seconds
+    }
+    cycleShayari();
   </script>
 </body>
 </html>
