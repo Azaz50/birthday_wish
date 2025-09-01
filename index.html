@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Happy Birthday Zeenat — my Gulabo Rani</title>
+  <title>Happy Birthday Neha — my Gulabo Rani</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -100,7 +100,7 @@
 <body>
   <div class="stars" aria-hidden="true"></div>
   <header>
-    <h1 class="title">Happy Birthday, <span style="color:var(--primary)">Zeenat</span> 🎉</h1>
+    <h1 class="title">Happy Birthday, <span style="color:var(--primary)">Neha</span> 🎉</h1>
     <p class="subtitle">To my Gulabo Rani — with love 💖</p>
   </header>
 
@@ -158,22 +158,22 @@
 
       <div class="controls" role="region" aria-label="Cake controls">
         <button class="btn" id="lightBtn" aria-pressed="false">🕯️ Light Candle</button>
-        <button class="btn secondary" id="blowBtn">🌬️ Make a Wish</button>
-        <button class="btn ghost" id="confettiBtn">🎊 Confetti</button>
         <button class="btn" id="soundBtn">🔊 Play Wish</button>
+        <button class="btn ghost" id="confettiBtn">🎊 Confetti</button>
+        <button class="btn secondary" id="blowBtn">🌬️ Make a Wish</button>
         <button class="btn ghost" id="stopSoundBtn">⏹️ Stop</button>
       </div>
     </section>
 
     <section class="message card">
-      <h2 style="margin-top:0">Dear Zeenat 🌸</h2>
+      <h2 style="margin-top:0">Dear Neha 🌸</h2>
       <div class="type" id="typebox" aria-live="polite"></div>
       <span class="tag">from: Your Love — to: my Gulabo Rani 💞</span>
     </section>
   </main>
 
   <canvas id="confetti"></canvas>
-  <footer>Made with ❤️ for Zeenat • Tap/Click anywhere to pop hearts</footer>
+  <footer>Made with ❤️ for Neha • Tap/Click anywhere to pop hearts</footer>
 
   <script>
     /* ==================================================
@@ -187,7 +187,7 @@
        ================================================== */
 
     // ===== Typewriter message =====
-    const msg = `Happy Birthday, Zeenat!\n\n"my Gulabo Rani", tumhari muskurahat mere din ka sabse sundar hissa hai.\nAaj ke din tumhare liye duaa hai — zindagi me har khushi mile, har sapna poora ho,\naur tumhara dil hamesha itna hi pyara rahe.\n\nBlow the candle, make a wish, and let the magic begin ✨`;
+    const msg = `Happy Birthday, Neha!\n\n"my Gulabo Rani", tumhari muskurahat mere din ka sabse sundar hissa hai.\nAaj ke din tumhare liye duaa hai — zindagi me har khushi mile, har sapna poora ho,\naur tumhara dil hamesha itna hi pyara rahe.\n\nBlow the candle, make a wish, and let the magic begin ✨`;
     const box = document.getElementById('typebox');
     let i = 0;
     function type() { if(i <= msg.length){ box.textContent = msg.slice(0,i++); setTimeout(type, 24);} }
@@ -268,15 +268,17 @@
     let audioCtx = null; // AudioContext used for melody
     let scheduledClose = null;
 
-    function speakText(text){
+    function speakText(text, repeat = false){
       try{
         if('speechSynthesis' in window){
-          // Cancel any previous utterances
           window.speechSynthesis.cancel();
           const u = new SpeechSynthesisUtterance(text);
           u.lang = 'en-US';
-          u.rate = 1; // normal speed
-          u.pitch = 1.05; // slightly warm
+          u.rate = 1;
+          u.pitch = 1.05;
+          u.onend = function(){
+            if(repeat) setTimeout(()=>speakText(text, true), 400); // repeat after short pause
+          };
           window.speechSynthesis.speak(u);
           return true;
         }
@@ -292,11 +294,9 @@
       {f:349.23, d:0.35},{f:349.23, d:0.35},{f:659.25, d:0.6},{f:523.25, d:0.6},{f:587.33, d:0.6},{f:523.25, d:0.9}
     ];
 
-    function playMelody(){
+    function playMelody(repeat = true){
       try{
-        // create a fresh AudioContext on user gesture
         if(audioCtx && typeof audioCtx.close === 'function'){
-          // if already playing, stop first
           audioCtx.close();
           audioCtx = null;
         }
@@ -307,7 +307,6 @@
         const oscillators = [];
         for(const note of melodyNotes){
           const o = audioCtx.createOscillator();
-          // use triangle for a sweet, mellow tone
           o.type = 'triangle';
           o.frequency.value = note.f;
           o.connect(gain);
@@ -318,12 +317,12 @@
           oscillators.push(o);
           offset += note.d;
         }
-        // schedule a close after melody ends
         const total = offset;
         if(scheduledClose) clearTimeout(scheduledClose);
         scheduledClose = setTimeout(()=>{
           if(audioCtx && typeof audioCtx.close === 'function') audioCtx.close();
           audioCtx = null;
+          if(repeat) setTimeout(()=>playMelody(true), 10); // repeat after short pause
         }, (total + 0.3) * 1000);
         return true;
       }catch(err){ console.warn('WebAudio error', err); return false; }
@@ -363,7 +362,7 @@
     window.addEventListener('pagehide', () => stopAllSound());
 
     window.addEventListener('DOMContentLoaded', () => {
-      playMelody();
+      playMelody(true); // auto play and repeat melody on page load
     });
 
     // ===== Shayari cycling =====
