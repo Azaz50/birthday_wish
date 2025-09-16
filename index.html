@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Happy Birthday Neha — my Gulabo Rani</title>
+  <title>Happy Birthday Zeenat — my Gulabo Rani</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
 
     /* cake stage */
     .stage{ position:relative; height:360px; display:flex; align-items:flex-end; justify-content:center; overflow:visible; }
-    @media (max-width:480px){ .stage{ height:300px } }
+    @media (max-width:480px){ .stage{ height:220px } }
     .plate{position:absolute; bottom:12px; width:90%; max-width:520px; height:18px; border-radius:12px; background:#f0f4ff; box-shadow: inset 0 -6px 0 #d8e2ff, 0 8px 18px rgba(0,0,0,.12);}    
     svg.cake{ width:100%; max-width:420px; height:auto; filter: drop-shadow(0 12px 18px rgba(0,0,0,.18)); display:block; margin: 0 auto }
 
@@ -49,6 +49,11 @@
     .b3{ left:38%; animation-duration: 11s}
     .b4{ left:62%; animation-duration: 12s}
     .b5{ left:80%; animation-duration: 13s}
+    .b6{ left:8%; animation-duration: 15s}
+    .b7{ left:35%; animation-duration: 17s}
+    .b8{ left:70%; animation-duration: 19s}
+    .b9{ left:65%; animation-duration: 21s}
+    .b10{ left:95%; animation-duration: 23s}
     @keyframes float { 0%{ transform: translateY(0) } 100%{ transform: translateY(-120vh) } }
 
     .controls{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
@@ -92,6 +97,31 @@
         max-height: 30vh;
       }
     }
+    .cake-image1 {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 16px rgba(0,0,0,.18);
+      border: 2.5px solid #fff;
+      background: #fff;
+      z-index: 2;
+      position: absolute;
+      /* Balloons are 44px font-size, so 64px is bigger */
+    }
+    @media (max-width: 900px) {
+      .cake-image1 {
+        width: 64px;
+        height: 64px;
+      }
+    }
+    @media (max-width: 600px) {
+      .cake-image1 {
+        width: 54px;
+        height: 54px;
+        border-width: 1.5px;
+      }
+    }
     .improved-cake {
       filter: drop-shadow(0 16px 32px #ffbcd4) drop-shadow(0 2px 8px #ffd166);
     }
@@ -100,8 +130,8 @@
 <body>
   <div class="stars" aria-hidden="true"></div>
   <header>
-    <h1 class="title">Happy Birthday, <span style="color:var(--primary)">Neha</span> 🎉</h1>
-    <p class="subtitle">To my Gulabo Rani — with love 💖</p>
+    <h1 class="title">Happy Birthday, <span style="color:var(--primary)">Zeenat</span> 🎉</h1>
+    <p class="subtitle">To my Bestie — with love 💖</p>
   </header>
 
   <main class="hero">
@@ -120,6 +150,12 @@
         <div class="balloon b3" aria-hidden="true">🎈</div>
         <div class="balloon b4" aria-hidden="true">🎈</div>
         <div class="balloon b5" aria-hidden="true">🎈</div>
+        <img src="image1.jpeg" alt="Birthday Pic" class="cake-image1 balloon b6" aria-hidden="true"/>
+        <img src="image2.jpeg" alt="Birthday Pic" class="cake-image1 balloon b7" aria-hidden="true"/>
+        <img src="image3.jpeg" alt="Birthday Pic" class="cake-image1 balloon b8" aria-hidden="true"/>
+        <img src="image4.jpeg" alt="Birthday Pic" class="cake-image1 balloon b9" aria-hidden="true"/>
+        <img src="image5.jpeg" alt="Birthday Pic" class="cake-image1 balloon b10" aria-hidden="true"/>
+
 
         <!-- Cake (SVG) -->
         <svg class="cake improved-cake" viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg" aria-label="Birthday cake">
@@ -166,14 +202,14 @@
     </section>
 
     <section class="message card">
-      <h2 style="margin-top:0">Dear Neha 🌸</h2>
+      <h2 style="margin-top:0">Dear Zeenat 🌸</h2>
       <div class="type" id="typebox" aria-live="polite"></div>
-      <span class="tag">from: Your Love — to: my Gulabo Rani 💞</span>
+      <span class="tag">from: Your Bestie — to: my Bestie 💞</span>
     </section>
   </main>
 
   <canvas id="confetti"></canvas>
-  <footer>Made with ❤️ for Neha • Tap/Click anywhere to pop hearts</footer>
+  <footer>Made with ❤️ for Zeenat • Tap/Click anywhere to pop hearts</footer>
 
   <script>
     /* ==================================================
@@ -187,7 +223,18 @@
        ================================================== */
 
     // ===== Typewriter message =====
-    const msg = `Happy Birthday, Neha!\n\n"my Gulabo Rani", tumhari muskurahat mere din ka sabse sundar hissa hai.\nAaj ke din tumhare liye duaa hai — zindagi me har khushi mile, har sapna poora ho,\naur tumhara dil hamesha itna hi pyara rahe.\n\nBlow the candle, make a wish, and let the magic begin ✨`;
+   const msg = `Happy Birthday, Zeenat! 🎉🎂
+
+    Meri sabse pyari dost, tumhari muskurahat meri zindagi ka wo roshni hai jo andheron ko bhi roshan kar deti hai. 
+    Aaj ke is khaas din par meri dua hai — tumhari zindagi hamesha khushiyon se bhari rahe, 
+    tumhare har sapne haqeeqat ban kar tumhe garv aur sukoon de, 
+    aur tumhara dil hamesha itna hi saaf, masoom aur pyara rahe.
+
+    Candles bujhakar sirf wish mat maangna,
+    apni rooh ke har armaan ko udaan dena — 
+    kyunki tum is duniya ki sabse khoobsurat kahani likhne layak ho. ✨💫`;
+
+    // const msg = `Happy Birthday, Zeenat!\n\n"my Gulabo Rani", tumhari muskurahat mere din ka sabse sundar hissa hai.\nAaj ke din tumhare liye duaa hai — zindagi me har khushi mile, har sapna poora ho,\naur tumhara dil hamesha itna hi pyara rahe.\n\nBlow the candle, make a wish, and let the magic begin ✨`;
     const box = document.getElementById('typebox');
     let i = 0;
     function type() { if(i <= msg.length){ box.textContent = msg.slice(0,i++); setTimeout(type, 24);} }
@@ -365,8 +412,12 @@
       playMelody(true); // auto play and repeat melody on page load
     });
 
-    // ===== Shayari cycling =====
+    
+    // ===== Shayari cycling (show main message first, then cycle shayari) =====
     const shayariList = [
+      `दोस्ती की राह पर तेरा साथ है सबसे खास।\nतेरे बिना अधूरी है मेरी हर एक बात।\nजन्मदिन पर ये दुआ है मेरी रब से,\nतेरी खुशियों का सवेरा हो हर दिन तेरा।`,
+      `दोस्ती का रिश्ता सबसे अनमोल होता है,\nहर ग़म में जो साथ दे, वो दोस्त कमाल होता है।\nतेरे जन्मदिन पर दुआ है ये रब से,\nतेरी ज़िंदगी का हर पल ख़ुशियों से मालामाल होता है।`,
+      `ज़िंदगी की राहों में कभी थकना मत,\nअपने अरमानों को कभी छोड़ना मत।\nमेहनत और सच्चाई को अपना रास्ता बनाना,\nहर मंज़िल पर तेरा ही नाम लिखा नज़र आना।\n\nजन्मदिन मुबारक हो मेरे अज़ीज़ दोस्त,\nतेरे लिए मेरी दुआएँ सदा रहें दुरुस्त।`,
       `Teri muskaan meri duaon ka asar hai,\nTere bina mera dil kuch be-asar hai.\nKhuda kare har janam tujhe paau main,\nMeri Gulabo Rani, tu meri duniya ka safar hai.\n🎂💐🎶\nHappy Birthday My Gulabo Rani`,
       `Zindagi tere pyaar se roshan hai,\nDil ki dhadkan teri tasveer hai.\nTujhe paake lagta hai mujhe,\nJaise meri duniya ek khubsurat taqdeer hai. 🎂✨`,
       `Tu meri duaon ka noor hai,\nTu mere khwabon ka surur hai.\nMeri Gulabo Rani, tujhe paake lagta hai,\nJaise meri mohabbat ka raboor hai. 💖`
@@ -386,9 +437,11 @@
     function cycleShayari() {
       typeShayari(shayariList[shayariIndex]);
       shayariIndex = (shayariIndex + 1) % shayariList.length;
-      setTimeout(cycleShayari, 12000); // change every 6 seconds
+      setTimeout(cycleShayari, 24000); // change every 24 seconds
     }
-    cycleShayari();
+    // Show main message first, then start shayari cycling after 24s
+    typeShayari(msg);
+    setTimeout(cycleShayari, 24000);
 
     // ===== Image Zoom (Mobile + Desktop) =====
     const cakeImg = document.querySelector('.cake-image');
@@ -438,6 +491,38 @@
       scale = Math.max(1, Math.min(3, scale));
       setTransform();
       e.preventDefault();
+    });
+
+    // ===== Birthday Pic Slideshow =====
+    const cakeImages = [
+      'image1.jpeg',
+      'image2.jpeg',
+      'image3.jpeg',
+      'image4.jpeg',
+      'image5.jpeg',
+      'image6.jpeg',
+      'image7.jpeg'
+    ];
+    const cakeImgEl = document.querySelector('.cake-image');
+    let cakeImgIdx = 0;
+    setInterval(() => {
+      cakeImgIdx = (cakeImgIdx + 1) % cakeImages.length;
+      cakeImgEl.src = cakeImages[cakeImgIdx];
+    }, 4000);
+
+    // ===== Balloon Burst on Touch/Click =====
+    function burstBalloon(e) {
+      const balloon = e.currentTarget;
+      balloon.style.transition = 'transform 0.32s cubic-bezier(.4,2,.3,1), opacity 0.32s';
+      balloon.style.transform = 'scale(1.5) rotate(-18deg)';
+      balloon.style.opacity = '0';
+      balloon.style.pointerEvents = 'none';
+      setTimeout(() => balloon.remove(), 320);
+      e.stopPropagation();
+    }
+    document.querySelectorAll('.balloon').forEach(b => {
+      b.addEventListener('click', burstBalloon);
+      b.addEventListener('touchstart', burstBalloon, {passive:true});
     });
   </script>
 </body>
