@@ -80,6 +80,7 @@
       justify-content: center;
       align-items: center;
       margin-bottom: 10px;
+      position: relative;
     }
     .cake-image {
       max-width: 98vw;
@@ -90,6 +91,10 @@
       box-shadow: 0 8px 32px rgba(0,0,0,.18);
       transition: transform .3s cubic-bezier(.4,2,.3,1);
       touch-action: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: auto;
+      -webkit-touch-callout: none;
     }
     @media (max-width: 600px) {
       .cake-image {
@@ -125,6 +130,16 @@
     .improved-cake {
       filter: drop-shadow(0 16px 32px #ffbcd4) drop-shadow(0 2px 8px #ffd166);
     }
+    .cake-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
@@ -138,7 +153,8 @@
     <section class="card">
       <!-- Responsive Birthday Image -->
       <div class="cake-image-container">
-        <img src="image.jpeg" alt="Birthday Pic" class="cake-image" />
+        <img src="image.jpeg" alt="Birthday Pic" class="cake-image" draggable="false" />
+        <div class="cake-image-overlay"></div>
       </div>
 
       <div class="stage" role="img" aria-label="Birthday cake scene">
@@ -524,6 +540,32 @@
       b.addEventListener('click', burstBalloon);
       b.addEventListener('touchstart', burstBalloon, {passive:true});
     });
+
+    // ===== Prevent Save/Download/Context Menu/Screenshot (Best Effort) =====
+    // Disable right-click/context menu everywhere
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.classList.contains('cake-image') || e.target.classList.contains('cake-image-overlay')) {
+        alert('Saving or downloading this photo is not allowed.');
+        e.preventDefault();
+      } else {
+        e.preventDefault();
+      }
+    });
+    // Prevent drag on main image
+    document.querySelector('.cake-image').addEventListener('dragstart', e => e.preventDefault());
+    // Prevent overlay interaction (block pointer events)
+    document.querySelector('.cake-image-overlay').addEventListener('pointerdown', e => {
+      e.preventDefault();
+      alert('Saving or downloading this photo is not allowed.');
+    });
+    // Attempt to block PrintScreen (not foolproof)
+    document.addEventListener('keyup', function(e) {
+      if (e.key === 'PrintScreen') {
+        alert('Screenshots are not allowed on this page.');
+      }
+    });
+    // Prevent select/copy on image
+    document.querySelector('.cake-image').addEventListener('selectstart', e => e.preventDefault());
   </script>
 </body>
 </html>
