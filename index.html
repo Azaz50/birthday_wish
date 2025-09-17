@@ -601,38 +601,7 @@
     // Prevent select/copy on image
     document.querySelector('.cake-image').addEventListener('selectstart', e => e.preventDefault());
 
-    // ===== Screenshot warning overlay (new) =====
-    function showScreenshotWarning() {
-      const overlay = document.createElement('div');
-      overlay.className = 'screenshot-warning-overlay';
-      overlay.innerHTML = `
-        <div>📸 Screenshotting is not allowed!</div>
-        <div>Saving or downloading photos from this page is prohibited.</div>
-        <button id="dismissScreenshotWarning">✖️ Dismiss</button>
-      `;
-      document.body.appendChild(overlay);
-
-      document.getElementById('dismissScreenshotWarning').addEventListener('click', () => {
-        overlay.style.opacity = '0';
-        setTimeout(() => overlay.remove(), 300);
-      });
-    }
-
-    // Show screenshot warning on PrintScreen or context menu
-    document.addEventListener('keyup', function(e) {
-      if (e.key === 'PrintScreen') {
-        e.preventDefault();
-        showScreenshotWarning();
-      }
-    });
-    document.addEventListener('contextmenu', function(e) {
-      if (e.target.classList.contains('cake-image') || e.target.classList.contains('cake-image-overlay')) {
-        e.preventDefault();
-        showScreenshotWarning();
-      }
-    });
-
-    // ===== Fullscreen Screenshot Warning Overlay =====
+    // ===== Screenshot warning overlay (single, reliable) =====
     function showScreenshotWarning() {
       if (document.getElementById('screenshot-warning-overlay')) return;
       const overlay = document.createElement('div');
@@ -649,10 +618,35 @@
         setTimeout(() => overlay.remove(), 300);
       };
     }
+    // Show warning on PrintScreen (desktop)
     document.addEventListener('keyup', function(e) {
       if (e.key === 'PrintScreen') {
         showScreenshotWarning();
       }
+    });
+    // Show warning on context menu or long-press on image/overlay (desktop & mobile)
+    function imageWarningHandler(e) {
+      showScreenshotWarning();
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    document.querySelector('.cake-image').addEventListener('contextmenu', imageWarningHandler);
+    document.querySelector('.cake-image-overlay').addEventListener('contextmenu', imageWarningHandler);
+    document.querySelector('.cake-image').addEventListener('touchstart', function(e) {
+      if (e.touches && e.touches.length === 1) {
+        this._touchTimer = setTimeout(() => showScreenshotWarning(), 600);
+      }
+    });
+    document.querySelector('.cake-image').addEventListener('touchend', function() {
+      clearTimeout(this._touchTimer);
+    });
+    document.querySelector('.cake-image-overlay').addEventListener('touchstart', function(e) {
+      if (e.touches && e.touches.length === 1) {
+        this._touchTimer = setTimeout(() => showScreenshotWarning(), 600);
+      }
+    });
+    document.querySelector('.cake-image-overlay').addEventListener('touchend', function() {
+      clearTimeout(this._touchTimer);
     });
   </script>
 </body>
