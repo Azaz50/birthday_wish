@@ -140,6 +140,40 @@
       border-radius: 50%;
       pointer-events: none;
     }
+
+    /* Fullscreen screenshot warning overlay */
+    .screenshot-warning-overlay {
+      position: fixed;
+      z-index: 99999;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1rem;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 32px;
+      transition: opacity 0.3s;
+    }
+    .screenshot-warning-overlay button {
+      margin-top: 32px;
+      font-size: 1.2rem;
+      padding: 10px 28px;
+      border-radius: 999px;
+      border: none;
+      background: #ff3b7b;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,.18);
+      transition: background 0.2s;
+    }
+    .screenshot-warning-overlay button:hover {
+      background: #7c3aed;
+    }
   </style>
 </head>
 <body>
@@ -566,6 +600,60 @@
     });
     // Prevent select/copy on image
     document.querySelector('.cake-image').addEventListener('selectstart', e => e.preventDefault());
+
+    // ===== Screenshot warning overlay (new) =====
+    function showScreenshotWarning() {
+      const overlay = document.createElement('div');
+      overlay.className = 'screenshot-warning-overlay';
+      overlay.innerHTML = `
+        <div>📸 Screenshotting is not allowed!</div>
+        <div>Saving or downloading photos from this page is prohibited.</div>
+        <button id="dismissScreenshotWarning">✖️ Dismiss</button>
+      `;
+      document.body.appendChild(overlay);
+
+      document.getElementById('dismissScreenshotWarning').addEventListener('click', () => {
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.remove(), 300);
+      });
+    }
+
+    // Show screenshot warning on PrintScreen or context menu
+    document.addEventListener('keyup', function(e) {
+      if (e.key === 'PrintScreen') {
+        e.preventDefault();
+        showScreenshotWarning();
+      }
+    });
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.classList.contains('cake-image') || e.target.classList.contains('cake-image-overlay')) {
+        e.preventDefault();
+        showScreenshotWarning();
+      }
+    });
+
+    // ===== Fullscreen Screenshot Warning Overlay =====
+    function showScreenshotWarning() {
+      if (document.getElementById('screenshot-warning-overlay')) return;
+      const overlay = document.createElement('div');
+      overlay.className = 'screenshot-warning-overlay';
+      overlay.id = 'screenshot-warning-overlay';
+      overlay.innerHTML = `
+        <div>⚠️ Screenshots are not allowed on this page.<br><br>
+        Please respect privacy and do not capture or share this content.<br><br>
+        <button id='dismissScreenshotWarning'>OK</button></div>
+      `;
+      document.body.appendChild(overlay);
+      document.getElementById('dismissScreenshotWarning').onclick = function() {
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.remove(), 300);
+      };
+    }
+    document.addEventListener('keyup', function(e) {
+      if (e.key === 'PrintScreen') {
+        showScreenshotWarning();
+      }
+    });
   </script>
 </body>
 </html>
