@@ -29,6 +29,7 @@
     }
     *{box-sizing: border-box}
     html,body{height:100%; margin:0; padding:0;}
+
     body{ font-family: 'Poppins', sans-serif; color:#e0e7ef; background: var(--bg); overflow-x:hidden; }
 
     /* Neon Title & Subtitle */
@@ -44,6 +45,7 @@
     .title span {
       color: var(--neon-pink);
       text-shadow: 0 0 8px #ff3b7b, 0 0 16px #ff3b7b, 0 0 32px #ff3b7b;
+
       filter: brightness(1.5);
     }
     .subtitle{
@@ -52,6 +54,7 @@
       color:#fff;
       font-size: clamp(14px, 3.8vw, 20px);
       text-shadow: 0 2px 8px #232946, 0 0 2px #a78bfa, 0 0 12px #181c2b;
+
       filter: brightness(1.2);
       background: rgba(39, 24, 60, 0.55);
       padding: 6px 18px;
@@ -79,6 +82,7 @@
       line-height:1.7;
       min-height:80px;
       white-space:pre-wrap;
+
       color: #fff;
       text-shadow: 0 0 8px #00fff7, 0 0 16px #00fff7, 0 0 32px #00fff7, 0 0 48px #00fff7;
       filter: brightness(1.2);
@@ -92,6 +96,7 @@
       font-size:12px;
       margin-top:10px;
       color: #00fff7;
+
       text-shadow: 0 0 8px #00fff7;
     }
 
@@ -112,6 +117,7 @@
       max-width: 98vw;
       max-height: 38vh;
       border-radius: 50%;
+
       aspect-ratio: 1/1;
       object-fit: cover;
       box-shadow: none;
@@ -120,6 +126,7 @@
       image-rendering: crisp-edges;
       background: #181c2b;
     }
+
     .cake-image-overlay {
       box-shadow: none;
       border: none;
@@ -163,6 +170,7 @@
       box-shadow: none;
       border: none;
       background: none;
+
     }
     @media (max-width: 600px) {
       .cake-image {
@@ -209,6 +217,7 @@
       position:absolute;
       bottom:-120px;
       font-size: 44px;
+
       /* Reduced neon glow */
       filter: drop-shadow(0 0 6px #00fff7) drop-shadow(0 0 10px #ff3b7b);
       animation: float 8s linear infinite;
@@ -224,7 +233,9 @@
     .b8{ left:70%; animation-duration: 19s; border-color: #ffd166; box-shadow: 0 0 8px 2px #ffd166;}
     .b9{ left:65%; animation-duration: 21s; border-color: #a78bfa; box-shadow: 0 0 8px 2px #a78bfa;}
     .b10{ left:95%; animation-duration: 23s; border-color: #2fffa3; box-shadow: 0 0 8px 2px #2fffa3;}
-    @keyframes float { 0%{ transform: translateY(0) } 100%{ transform: translateY(-120vh) } }
+    @keyframes float {
+        0%{ transform: translateY(0) } 100%{ transform: translateY(-120vh) }
+    }
 
     .stars{position: fixed; inset:0; pointer-events:none; opacity:1; background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 40px 40px; animation: twinkle 4s linear infinite;}
     @keyframes twinkle{ from{transform:translateY(0)} to{transform:translateY(-40px)} }
@@ -235,7 +246,7 @@
     .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; max-width:1100px; margin:12px auto; padding: 0 18px;}
     @media (max-width:900px){ .hero{grid-template-columns:1fr; text-align:center} }
 
-    .card{background:#ffffffdd; backdrop-filter: blur(8px); border-radius: 18px; padding: 18px; box-shadow: var(--shadow);}    
+    .card{background:#ffffffdd; backdrop-filter: blur(8px); border-radius: 18px; padding: 18px; box-shadow: var(--shadow);}
 
     /* cake stage */
     .stage{ position:relative; height:360px; display:flex; align-items:flex-end; justify-content:center; overflow:visible; }
@@ -308,6 +319,7 @@
         max-width: 70vw;
         max-height: 30vh;
       }
+
     }
     .cake-image1 {
       width: 80px;
@@ -319,11 +331,13 @@
       background: #181c2b;
       z-index: 2;
       position: absolute;
+
       filter: brightness(1.1) drop-shadow(0 0 4px #ff3b7b);
     }
     @media (max-width: 900px) {
       .cake-image1 {
         width: 64px;
+
         height: 64px;
       }
     }
@@ -602,9 +616,12 @@
 
     // ===== Candle controls =====
     const flameGroup = document.getElementById('flameGroup');
-    const lightBtn = document.getElementById('lightBtn');
+  const lightBtn = document.getElementById('lightBtn');
     const blowBtn  = document.getElementById('blowBtn');
     let lit = false;
+    
+    // Pre-fetch flameGroup element
+    const flameGroupStyle = flameGroup.style;
 
     lightBtn.addEventListener('click', () => {
       if (flameGroup.style.display === 'none' || flameGroup.style.display === '') {
@@ -670,7 +687,9 @@
        This avoids loading external audio files that may trigger NotSupportedError.
     */
 
-    const soundBtn = document.getElementById('soundBtn');
+
+
+  const soundBtn = document.getElementById('soundBtn');
     const stopBtn = document.getElementById('stopSoundBtn');
     let audioCtx = null; // AudioContext used for melody
     let scheduledClose = null;
@@ -716,7 +735,7 @@
           const o = audioCtx.createOscillator();
           o.type = 'triangle';
           o.frequency.value = note.f;
-          o.connect(gain);
+            o.connect(gain);
           const start = now + offset;
           const stop = start + note.d * 0.95;
           o.start(start);
@@ -749,7 +768,7 @@
 
     soundBtn.addEventListener('click', async () => {
       // On click: speak the wish, then play melody. Both are user-gesture initiated.
-    //   const said = speakText('Happy Birthday, my Gulabo Rani. Wishing you joy, love and endless smiles.');
+      //   const said = speakText('Happy Birthday, my Gulabo Rani. Wishing you joy, love and endless smiles.');
       const played = playMelody();
       // If both failed (older browser), show a message
       if(!said && !played){
@@ -772,7 +791,7 @@
       setTimeout(() => playMelody(true), 200); // Start melody ASAP after DOMContentLoaded
     });
 
-    
+
     // ===== Shayari cycling (show main message first, then cycle shayari) =====
     const shayariList = [
       `✨Har subah tere liye nayi roshni ka paighaam ho,
@@ -874,11 +893,15 @@
     // ===== Birthday Pic Slideshow =====
     const cakeImages = [
       'image.jpeg',
+
       'image2.jpeg',
+
       'image3.jpeg',
       'image4.jpeg',
       'image5.jpeg',
+
       'image6.jpeg'
+
     ];
     const cakeImgEl = document.querySelector('.cake-image');
     let cakeImgIdx = 0;
@@ -888,18 +911,22 @@
     }, 4000);
 
     // ===== Balloon Burst on Touch/Click =====
+    const balloonClass = 'balloon';
     function burstBalloon(e) {
       const balloon = e.currentTarget;
       balloon.style.transition = 'transform 0.32s cubic-bezier(.4,2,.3,1), opacity 0.32s';
       balloon.style.transform = 'scale(1.5) rotate(-18deg)';
       balloon.style.opacity = '0';
       balloon.style.pointerEvents = 'none';
-      setTimeout(() => balloon.remove(), 320);
+      setTimeout(() => {
+        balloon.remove();
+      }, 320);
       e.stopPropagation();
     }
-    document.querySelectorAll('.balloon').forEach(b => {
-      b.addEventListener('click', burstBalloon);
-      b.addEventListener('touchstart', burstBalloon, {passive:true});
+    const balloons = document.querySelectorAll('.' + balloonClass);
+    balloons.forEach(b => {
+        b.addEventListener('click', burstBalloon);
+        b.addEventListener('touchstart', burstBalloon, {passive: true});
     });
 
     // ===== Prevent Save/Download/Context Menu/Screenshot (Best Effort) =====
@@ -935,6 +962,7 @@
       overlay.className = 'screenshot-warning-overlay';
       overlay.id = 'screenshot-warning-overlay';
       overlay.innerHTML = `
+
         <div>⚠️ Screenshots are not allowed on this page.<br><br>
         Please respect privacy and do not capture or share this content.<br><br>
         <button id='dismissScreenshotWarning'>OK</button></div>
@@ -953,9 +981,11 @@
     });
     // Show warning on context menu or long-press on image/overlay (desktop & mobile)
     function imageWarningHandler(e) {
+
       showScreenshotWarning();
       e.preventDefault();
       e.stopPropagation();
+
     }
     document.querySelector('.cake-image').addEventListener('contextmenu', imageWarningHandler);
     document.querySelector('.cake-image-overlay').addEventListener('contextmenu', imageWarningHandler);
@@ -977,4 +1007,6 @@
     });
   </script>
 </body>
+
+
 </html>
