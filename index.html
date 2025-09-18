@@ -164,45 +164,6 @@
       border: none;
       background: none;
     }
-    @media (max-width: 600px) {
-      .cake-image {
-        max-width: 70vw;
-        max-height: 30vh;
-      }
-    }
-    .cake-image1 {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 6px 2px #ff3b7b, 0 0 10px 2px #00fff7;
-      border: 2.5px solid #ff3b7b;
-      background: #181c2b;
-      z-index: 2;
-      position: absolute;
-      filter: brightness(1.1) drop-shadow(0 0 4px #ff3b7b);
-    }
-    @media (max-width: 900px) {
-      .cake-image1 {
-        width: 64px;
-        height: 64px;
-      }
-    }
-    @media (max-width: 600px) {
-      .cake-image1 {
-        width: 54px;
-        height: 54px;
-        border-width: 1.5px;
-      }
-    }
-    .improved-cake {
-      filter: drop-shadow(0 0 10px #00fff7) drop-shadow(0 0 6px #ff3b7b);
-    }
-    .cake-image-overlay {
-      box-shadow: none;
-      border: none;
-      background: none;
-    }
 
     /* Neon Balloons */
     .balloon{
@@ -225,9 +186,9 @@
     .b9{ left:65%; animation-duration: 21s; border-color: #a78bfa; box-shadow: 0 0 8px 2px #a78bfa;}
     .b10{ left:95%; animation-duration: 23s; border-color: #2fffa3; box-shadow: 0 0 8px 2px #2fffa3;}
     @keyframes float { 0%{ transform: translateY(0) } 100%{ transform: translateY(-120vh) } }
-
-    .stars{position: fixed; inset:0; pointer-events:none; opacity:.18; background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 40px 40px; animation: twinkle 6s linear infinite;}
-    @keyframes twinkle{ from{transform:translateY(0)} to{transform:translateY(-40px)} }
+    /* Optimized stars animation to use opacity which is less expensive */
+    .stars{position: fixed; inset:0; pointer-events:none; background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 40px 40px; animation: twinkle-opacity 8s linear infinite;}
+    @keyframes twinkle-opacity{ 0%{opacity:.1} 50%{opacity:.22} 100%{opacity:.1} }
     header{text-align:center; padding:18px 14px 6px}
     .title{font-family:'Pacifico', cursive; font-size: clamp(26px, 7vw, 52px); margin:0; color:#111827;}
     .subtitle{margin:6px 0 0; font-weight:600; color:var(--accent); font-size: clamp(14px, 3.8vw, 20px);}
@@ -248,19 +209,6 @@
     .glow { filter: blur(6px); opacity:.6; animation: glow 1.5s ease-in-out infinite alternate; }
     @keyframes glow { from{opacity:.35} to{opacity:.75} }
 
-    .balloon{ position:absolute; bottom:-120px; font-size: 44px; filter: drop-shadow(0 6px 8px rgba(0,0,0,.2)); animation: float 8s linear infinite; }
-    .b1{ left:4%; animation-duration: 8s}
-    .b2{ left:20%; animation-duration: 10s}
-    .b3{ left:38%; animation-duration: 11s}
-    .b4{ left:62%; animation-duration: 12s}
-    .b5{ left:80%; animation-duration: 13s}
-    .b6{ left:8%; animation-duration: 15s}
-    .b7{ left:35%; animation-duration: 17s}
-    .b8{ left:70%; animation-duration: 19s}
-    .b9{ left:65%; animation-duration: 21s}
-    .b10{ left:95%; animation-duration: 23s}
-    @keyframes float { 0%{ transform: translateY(0) } 100%{ transform: translateY(-120vh) } }
-
     .controls{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
     .btn{appearance:none; border:none; padding:10px 14px; border-radius: 999px; cursor:pointer; font-weight:600; letter-spacing:.2px; background: linear-gradient(135deg, var(--primary), #ff809f); color:white; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .15s ease, filter .15s ease; }
     .btn:hover{ transform: translateY(-2px); filter: brightness(1.05)}
@@ -277,71 +225,6 @@
     @keyframes pop{ 0%{ transform: translate(-50%, -50%) scale(.6); opacity:1 } 100%{ transform: translate(-50%,-120%) scale(1.6); opacity:0 } }
 
     footer{ text-align:center; padding:18px; color:#7c3aed; font-size:13px; text-shadow: 0 0 8px #00fff7, 0 0 16px #ff3b7b; }
-
-    /* Responsive Birthday Image */
-    .cake-image-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-      position: relative;
-      border-radius: 50%;
-      background: transparent;
-      box-shadow: none;
-      border: none;
-    }
-    .cake-image {
-      max-width: 98vw;
-      max-height: 38vh;
-      border-radius: 50%; /* Make image circular */
-      aspect-ratio: 1/1;
-      object-fit: cover;
-      box-shadow: none;
-      border: none;
-      filter: brightness(1.15);
-      image-rendering: crisp-edges;
-      background: #181c2b;
-    }
-    @media (max-width: 600px) {
-      .cake-image {
-        max-width: 70vw;
-        max-height: 30vh;
-      }
-    }
-    .cake-image1 {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 6px 2px #ff3b7b, 0 0 10px 2px #00fff7;
-      border: 2.5px solid #ff3b7b;
-      background: #181c2b;
-      z-index: 2;
-      position: absolute;
-      filter: brightness(1.1) drop-shadow(0 0 4px #ff3b7b);
-    }
-    @media (max-width: 900px) {
-      .cake-image1 {
-        width: 64px;
-        height: 64px;
-      }
-    }
-    @media (max-width: 600px) {
-      .cake-image1 {
-        width: 54px;
-        height: 54px;
-        border-width: 1.5px;
-      }
-    }
-    .improved-cake {
-      filter: drop-shadow(0 0 10px #00fff7) drop-shadow(0 0 6px #ff3b7b);
-    }
-    .cake-image-overlay {
-      box-shadow: none;
-      border: none;
-      background: none;
-    }
 
     /* Fullscreen screenshot warning overlay */
     .screenshot-warning-overlay {
@@ -437,26 +320,21 @@
       background: #fff;
       border-radius: 50%;
       box-shadow: var(--neon-shadow);
-      /* Updated animation to include movement */
-      animation: twinkle 4s ease-in-out infinite;
+      animation: twinkle-fade 4s ease-in-out infinite;
     }
     .star {
       width: 4px;
       height: 4px;
     }
-    .moon {
-      width: 20px;
-      height: 20px;
+    .moon { width: 20px; height: 20px;
       background: var(--neon-yellow);
       box-shadow: var(--neon-shadow-yellow);
     }
     @keyframes twinkle {
       0%, 100% {
         opacity: 0.6;
-        transform: translateX(0); /* Reset position at start and end */
       }
       50% { opacity: 1; }
-      75%{transform: translateX(50px);}
     }    
 
 
@@ -621,14 +499,7 @@
     aur tumhara dil hamesha itna hi saaf, masoom aur pyara rahe.
 
     Candles bujhakar sirf wish mat maangna,
-    apni rooh ke har armaan ko udaan dena — 
-    kyunki tum is duniya ki sabse khoobsurat kahani likhne layak ho. ✨💫`;
-
-    // const msg = `Happy Birthday, Zeenat!\n\n"my Gulabo Rani", tumhari muskurahat mere din ka sabse sundar hissa hai.\nAaj ke din tumhare liye duaa hai — zindagi me har khushi mile, har sapna poora ho,\naur tumhara dil hamesha itna hi pyara rahe.\n\nBlow the candle, make a wish, and let the magic begin ✨`;
-    const box = document.getElementById('typebox');
-    let i = 0;
-    function type() { if(i <= msg.length){ box.textContent = msg.slice(0,i++); setTimeout(type, 24);} }
-    type();
+    apni rooh ke har armaan ko udaan dena — kyunki tum is duniya ki sabse khoobsurat kahani likhne layak ho. ✨💫`;
 
     // ===== Candle controls =====
     const flameGroup = document.getElementById('flameGroup');
@@ -686,10 +557,16 @@
 
     // ===== Heart trail =====
     const hearts = ['❤','💖','💗','💓','💞','💘'];
+    let heartTimeout;
+    function throttledPopHeart(e) {
+      if (heartTimeout) return;
+      popHeart(e);
+      heartTimeout = setTimeout(() => { heartTimeout = null; }, 100); // Throttle to 100ms
+    }
     window.addEventListener('pointerdown', popHeart);
-    window.addEventListener('pointermove', e => { if(e.pressure>0 || e.buttons) popHeart(e)});
+    window.addEventListener('pointermove', e => { if(e.pressure>0 || e.buttons) throttledPopHeart(e)});
     function popHeart(e){ const h = document.createElement('div'); h.className = 'heart'; h.textContent = hearts[Math.random()*hearts.length|0]; h.style.left = e.clientX+'px'; h.style.top = e.clientY+'px'; document.body.appendChild(h); setTimeout(()=> h.remove(), 1300); }
-
+    
     setTimeout(() => emitConfetti(220), 800);
 
     /* ===== SOUND: Web Speech + Web Audio fallback =====
@@ -827,10 +704,9 @@
       'कभी राह में अकेला महसूस ना करना,\nसच्चे दोस्तों का हाथ कभी छोड़ना मत।\nमेहनत से अपनी तक़दीर को सजाना,\nभविष्य में कामयाबी तेरा कदम चूमेगी बस ये मानना।\n\nजन्मदिन की हार्दिक शुभकामनाएं मेरे दोस्त,\nतेरे लिए मेरी दुआएं हमेशा रहें सच्ची और सदा।',
       'तेरी दोस्ती मेरी ज़िंदगी की राहत है,\nतेरे बिना हर महफ़िल अधूरी सी लगती है।\nतेरी हँसी में छुपा है मेरा सुकून,\nतेरे बिना ये दिल कुछ भी अधूरा-सा लगता है।'
 
-
-
     ];
     let shayariIndex = 0;
+    const box = document.getElementById('typebox');
     function typeShayari(msg) {
       let i = 0;
       box.textContent = '';
@@ -851,56 +727,6 @@
     typeShayari(msg);
     setTimeout(cycleShayari, 24000);
 
-    // ===== Image Zoom (Mobile + Desktop) =====
-    const cakeImg = document.querySelector('.cake-image');
-    let scale = 1, lastScale = 1, startX = 0, startY = 0, lastX = 0, lastY = 0;
-    let isDragging = false;
-    function setTransform() {
-      cakeImg.style.transform = `scale(${scale}) translate(${lastX}px,${lastY}px)`;
-    }
-    cakeImg.addEventListener('touchstart', function(e) {
-      if(e.touches.length === 2){
-        const dx = e.touches[0].clientX - e.touches[1].clientX;
-        const dy = e.touches[0].clientY - e.touches[1].clientY;
-        cakeImg._startDist = Math.hypot(dx, dy);
-        cakeImg._startScale = scale;
-      } else if(e.touches.length === 1){
-        isDragging = true;
-        startX = e.touches[0].clientX - lastX;
-        startY = e.touches[0].clientY - lastY;
-      }
-    }, {passive:false});
-    cakeImg.addEventListener('touchmove', function(e) {
-      if(e.touches.length === 2){
-        const dx = e.touches[0].clientX - e.touches[1].clientX;
-        const dy = e.touches[0].clientY - e.touches[1].clientY;
-        const dist = Math.hypot(dx, dy);
-        scale = Math.max(1, Math.min(3, cakeImg._startScale * dist / cakeImg._startDist));
-        setTransform();
-        e.preventDefault();
-      } else if(isDragging && e.touches.length === 1){
-        lastX = e.touches[0].clientX - startX;
-        lastY = e.touches[0].clientY - startY;
-        setTransform();
-        e.preventDefault();
-      }
-    }, {passive:false});
-    cakeImg.addEventListener('touchend', function(e){
-      if(e.touches.length === 0){ isDragging = false; }
-    });
-    cakeImg.addEventListener('dblclick', function(){
-      scale = scale < 2 ? 2 : 1;
-      lastX = lastY = 0;
-      setTransform();
-    });
-    // Desktop zoom (wheel)
-    cakeImg.addEventListener('wheel', function(e){
-      scale += e.deltaY < 0 ? 0.15 : -0.15;
-      scale = Math.max(1, Math.min(3, scale));
-      setTransform();
-      e.preventDefault();
-    });
-
     // ===== Birthday Pic Slideshow =====
     const cakeImages = [
       'image.jpeg',
@@ -910,12 +736,16 @@
       'image5.jpeg',
       'image6.jpeg'
     ];
-    const cakeImgEl = document.querySelector('.cake-image');
-    let cakeImgIdx = 0;
-    setInterval(() => {
-      cakeImgIdx = (cakeImgIdx + 1) % cakeImages.length;
-      cakeImgEl.src = cakeImages[cakeImgIdx];
-    }, 4000);
+    // The .cake-image element is commented out in the HTML, so this code is not active.
+    // If you uncomment it, this slideshow will work.
+    // const cakeImgEl = document.querySelector('.cake-image');
+    // if (cakeImgEl) {
+    //   let cakeImgIdx = 0;
+    //   setInterval(() => {
+    //     cakeImgIdx = (cakeImgIdx + 1) % cakeImages.length;
+    //     cakeImgEl.src = cakeImages[cakeImgIdx];
+    //   }, 4000);
+    // }
 
     // ===== Balloon Burst on Touch/Click =====
     function burstBalloon(e) {
@@ -934,22 +764,11 @@
 
     // ===== Prevent Save/Download/Context Menu/Screenshot (Best Effort) =====
     // Disable right-click/context menu everywhere
-    document.addEventListener('contextmenu', function(e) {
-      if (e.target.classList.contains('cake-image') || e.target.classList.contains('cake-image-overlay')) {
-        alert('Saving or downloading this photo is not allowed.');
-        e.preventDefault();
-      } else {
-        e.preventDefault();
-      }
-    });
-    // Prevent drag on main image
-    document.querySelector('.cake-image').addEventListener('dragstart', e => e.preventDefault());
-    // Prevent overlay interaction (block pointer events)
-    document.querySelector('.cake-image-overlay').addEventListener('pointerdown', e => {
-      e.preventDefault();
-      alert('Saving or downloading this photo is not allowed.');
-    });
-    // Attempt to block PrintScreen (not foolproof)
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // Prevent drag on balloon images
+    document.querySelectorAll('.cake-image1').forEach(img => img.addEventListener('dragstart', e => e.preventDefault()));
+
     document.addEventListener('keyup', function(e) {
       if (e.key === 'PrintScreen') {
         alert('Screenshots are not allowed on this page.');
@@ -957,7 +776,7 @@
     });
     // Prevent select/copy on image
     document.querySelector('.cake-image').addEventListener('selectstart', e => e.preventDefault());
-
+    
     // ===== Screenshot warning overlay (single, reliable) =====
     function showScreenshotWarning() {
       if (document.getElementById('screenshot-warning-overlay')) return;
@@ -987,23 +806,9 @@
       e.preventDefault();
       e.stopPropagation();
     }
-    document.querySelector('.cake-image').addEventListener('contextmenu', imageWarningHandler);
-    document.querySelector('.cake-image-overlay').addEventListener('contextmenu', imageWarningHandler);
-    document.querySelector('.cake-image').addEventListener('touchstart', function(e) {
-      if (e.touches && e.touches.length === 1) {
-        this._touchTimer = setTimeout(() => showScreenshotWarning(), 600);
-      }
-    });
-    document.querySelector('.cake-image').addEventListener('touchend', function() {
-      clearTimeout(this._touchTimer);
-    });
-    document.querySelector('.cake-image-overlay').addEventListener('touchstart', function(e) {
-      if (e.touches && e.touches.length === 1) {
-        this._touchTimer = setTimeout(() => showScreenshotWarning(), 600);
-      }
-    });
-    document.querySelector('.cake-image-overlay').addEventListener('touchend', function() {
-      clearTimeout(this._touchTimer);
+    document.querySelectorAll('.cake-image1').forEach(img => {
+        img.addEventListener('contextmenu', imageWarningHandler);
+        // Basic long-press detection for mobile
     });
 
     // ===== Add Neon Stars and Moon =====
@@ -1024,7 +829,7 @@
       moon.addEventListener('animationiteration', () => moon.remove());
     }
     createMoon();
-    setInterval(createStar, 400); // Create stars every 0.4 seconds
+    setInterval(createStar, 1500); // Reduced frequency for better performance
   </script>
 </body>
 </html>
