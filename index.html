@@ -660,7 +660,7 @@
     window.addEventListener('pointermove', e => { if(e.pressure>0 || e.buttons) popHeart(e)});
     function popHeart(e){ const h = document.createElement('div'); h.className = 'heart'; h.textContent = hearts[Math.random()*hearts.length|0]; h.style.left = e.clientX+'px'; h.style.top = e.clientY+'px'; document.body.appendChild(h); setTimeout(()=> h.remove(), 1300); }
 
-    setTimeout(()=> emitConfetti(220), 800);
+    setTimeout(() => emitConfetti(220), 800);
 
     /* ===== SOUND: Web Speech + Web Audio fallback =====
        Strategy:
@@ -769,12 +769,24 @@
     window.addEventListener('pagehide', () => stopAllSound());
 
     window.addEventListener('DOMContentLoaded', () => {
-      playMelody(true); // auto play and repeat melody on page load
+      setTimeout(() => playMelody(true), 200); // Start melody ASAP after DOMContentLoaded
     });
 
     
     // ===== Shayari cycling (show main message first, then cycle shayari) =====
     const shayariList = [
+      `✨Har subah tere liye nayi roshni ka paighaam ho,
+        Tere har qadam pe kaamyabi ka salaam ho.
+        Mehnat ki raaho me kabhi rukawat na aaye,
+        dua hai meri, tera mustaqbil sada buland-o-shaam ho.
+
+        Sehat teri hamesha gulabon si mehka kare,
+        Dawat-e-zindagi me khushhali ka rang chhaya kare.
+        Maal-o-daulat, izzat aur sukoon tera humsafar bane,
+        Har dua me tera zikr, har dua me teri jeet likha kare.
+
+        Meri dost, Rab kare tera safar hamesha aasaan ho,
+        Teri zindagi ek khoobsurat misaal ho, tera har armaan poora ho.✨`,
       `दोस्ती की राह पर तेरा साथ है सबसे खास।\nतेरे बिना अधूरी है मेरी हर एक बात।\nजन्मदिन पर ये दुआ है मेरी रब से,\nतेरी खुशियों का सवेरा हो हर दिन तेरा।`,
       `दोस्ती का रिश्ता सबसे अनमोल होता है,\nहर ग़म में जो साथ दे, वो दोस्त कमाल होता है।\nतेरे जन्मदिन पर दुआ है ये रब से,\nतेरी ज़िंदगी का हर पल ख़ुशियों से मालामाल होता है।`,
       `ज़िंदगी की राहों में कभी थकना मत,\nअपने अरमानों को कभी छोड़ना मत।\nमेहनत और सच्चाई को अपना रास्ता बनाना,\nहर मंज़िल पर तेरा ही नाम लिखा नज़र आना।\n\nजन्मदिन मुबारक हो मेरे अज़ीज़ दोस्त,\nतेरे लिए मेरी दुआएँ सदा रहें दुरुस्त।`,
