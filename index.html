@@ -164,6 +164,45 @@
       border: none;
       background: none;
     }
+    @media (max-width: 600px) {
+      .cake-image {
+        max-width: 70vw;
+        max-height: 30vh;
+      }
+    }
+    .cake-image1 {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 6px 2px #ff3b7b, 0 0 10px 2px #00fff7;
+      border: 2.5px solid #ff3b7b;
+      background: #181c2b;
+      z-index: 2;
+      position: absolute;
+      filter: brightness(1.1) drop-shadow(0 0 4px #ff3b7b);
+    }
+    @media (max-width: 900px) {
+      .cake-image1 {
+        width: 64px;
+        height: 64px;
+      }
+    }
+    @media (max-width: 600px) {
+      .cake-image1 {
+        width: 54px;
+        height: 54px;
+        border-width: 1.5px;
+      }
+    }
+    .improved-cake {
+      filter: drop-shadow(0 0 10px #00fff7) drop-shadow(0 0 6px #ff3b7b);
+    }
+    .cake-image-overlay {
+      box-shadow: none;
+      border: none;
+      background: none;
+    }
 
     /* Neon Balloons */
     .balloon{
@@ -172,14 +211,19 @@
       font-size: 44px;
       /* Reduced neon glow */
       filter: drop-shadow(0 0 6px #00fff7) drop-shadow(0 0 10px #ff3b7b);
-      animation: float 10s linear infinite;
+      animation: float 8s linear infinite;
       text-shadow: 0 0 4px #00fff7, 0 0 8px #ff3b7b, 0 0 12px #ff3b7b;
     }
-    .b1{ left:8%; animation-duration: 10s; color: #00fff7;}
-    .b2{ left:28%; animation-duration: 12s; color: #ff3b7b;}
-    .b3{ left:48%; animation-duration: 14s; color: #ffd166;}
-    .b4{ left:68%; animation-duration: 16s; color: #a78bfa;}
-    .b5{ left:88%; animation-duration: 18s; color: #2fffa3;}
+    .b1{ left:4%; animation-duration: 8s; color: #00fff7; text-shadow: 0 0 4px #00fff7, 0 0 8px #00fff7;}
+    .b2{ left:20%; animation-duration: 10s; color: #ff3b7b; text-shadow: 0 0 4px #ff3b7b, 0 0 8px #ff3b7b;}
+    .b3{ left:38%; animation-duration: 11s; color: #ffd166; text-shadow: 0 0 4px #ffd166, 0 0 8px #ffd166;}
+    .b4{ left:62%; animation-duration: 12s; color: #a78bfa; text-shadow: 0 0 4px #a78bfa, 0 0 8px #a78bfa;}
+    .b5{ left:80%; animation-duration: 13s; color: #2fffa3; text-shadow: 0 0 4px #2fffa3, 0 0 8px #2fffa3;}
+    .b6{ left:8%; animation-duration: 15s; border-color: #00fff7; box-shadow: 0 0 8px 2px #00fff7;}
+    .b7{ left:35%; animation-duration: 17s; border-color: #ff3b7b; box-shadow: 0 0 8px 2px #ff3b7b;}
+    .b8{ left:70%; animation-duration: 19s; border-color: #ffd166; box-shadow: 0 0 8px 2px #ffd166;}
+    .b9{ left:65%; animation-duration: 21s; border-color: #a78bfa; box-shadow: 0 0 8px 2px #a78bfa;}
+    .b10{ left:95%; animation-duration: 23s; border-color: #2fffa3; box-shadow: 0 0 8px 2px #2fffa3;}
     @keyframes float { 0%{ transform: translateY(0) } 100%{ transform: translateY(-120vh) } }
 
     .stars{position: fixed; inset:0; pointer-events:none; opacity:.18; background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 40px 40px; animation: twinkle 6s linear infinite;}
@@ -412,11 +456,11 @@
         <div class="balloon b3" aria-hidden="true">🎈</div>
         <div class="balloon b4" aria-hidden="true">🎈</div>
         <div class="balloon b5" aria-hidden="true">🎈</div>
-        <img src="image.jpeg" alt="Birthday Pic" class="cake-image1 balloon b1" aria-hidden="true"/>
-        <img src="image2.jpeg" alt="Birthday Pic" class="cake-image1 balloon b2" aria-hidden="true"/>
-        <img src="image3.jpeg" alt="Birthday Pic" class="cake-image1 balloon b3" aria-hidden="true"/>
-        <img src="image4.jpeg" alt="Birthday Pic" class="cake-image1 balloon b4" aria-hidden="true"/>
-        <img src="image5.jpeg" alt="Birthday Pic" class="cake-image1 balloon b5" aria-hidden="true"/>
+        <img src="image.jpeg" alt="Birthday Pic" class="cake-image1 balloon b6" aria-hidden="true"/>
+        <img src="image2.jpeg" alt="Birthday Pic" class="cake-image1 balloon b7" aria-hidden="true"/>
+        <img src="image3.jpeg" alt="Birthday Pic" class="cake-image1 balloon b8" aria-hidden="true"/>
+        <img src="image4.jpeg" alt="Birthday Pic" class="cake-image1 balloon b9" aria-hidden="true"/>
+        <img src="image5.jpeg" alt="Birthday Pic" class="cake-image1 balloon b10" aria-hidden="true"/>
 
 
         <!-- Cake (SVG) -->
@@ -592,10 +636,10 @@
     const ctx = canvas.getContext('2d');
     let W, H; function resize(){ W = canvas.width = innerWidth; H = canvas.height = innerHeight; } addEventListener('resize', resize); resize();
 
-    function emitConfetti(count = 50){
+    function emitConfetti(count = 140){
       const particles = [];
       for(let i=0;i<count;i++){
-        particles.push({x: W/2, y: H/3, r: Math.random()*6+2, vx: (Math.random()-0.5)*6, vy: Math.random()*-8-4, a: Math.random()*Math.PI, life: 80+Math.random()*30});
+        particles.push({x: W/2, y: H/3, r: Math.random()*6+2, vx: (Math.random()-0.5)*6, vy: Math.random()*-8-4, a: Math.random()*Math.PI, life: 120+Math.random()*40});
       }
       const colors = ['#ff3b7b','#7c3aed','#ffd166','#2dd4bf','#60a5fa','#34d399'];
       let frame = 0;
@@ -615,6 +659,8 @@
     window.addEventListener('pointerdown', popHeart);
     window.addEventListener('pointermove', e => { if(e.pressure>0 || e.buttons) popHeart(e)});
     function popHeart(e){ const h = document.createElement('div'); h.className = 'heart'; h.textContent = hearts[Math.random()*hearts.length|0]; h.style.left = e.clientX+'px'; h.style.top = e.clientY+'px'; document.body.appendChild(h); setTimeout(()=> h.remove(), 1300); }
+
+    setTimeout(()=> emitConfetti(220), 800);
 
     /* ===== SOUND: Web Speech + Web Audio fallback =====
        Strategy:
@@ -827,7 +873,7 @@
     setInterval(() => {
       cakeImgIdx = (cakeImgIdx + 1) % cakeImages.length;
       cakeImgEl.src = cakeImages[cakeImgIdx];
-    }, 8000); // Slower slideshow: 8 seconds
+    }, 4000);
 
     // ===== Balloon Burst on Touch/Click =====
     function burstBalloon(e) {
