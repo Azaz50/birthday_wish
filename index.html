@@ -430,6 +430,36 @@
       color: #00fff7 !important;
       text-shadow: 0 0 8px #00fff7, 0 0 16px #ff3b7b !important;
     }
+
+    /* Neon Stars and Moon */
+    .star, .moon {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: var(--neon-shadow);
+      /* Updated animation to include movement */
+      animation: twinkle 4s ease-in-out infinite;
+    }
+    .star {
+      width: 4px;
+      height: 4px;
+    }
+    .moon {
+      width: 20px;
+      height: 20px;
+      background: var(--neon-yellow);
+      box-shadow: var(--neon-shadow-yellow);
+    }
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.6;
+        transform: translateX(0); /* Reset position at start and end */
+      }
+      50% { opacity: 1; }
+      75%{transform: translateX(50px);}
+    }    
+
+
   </style>
 </head>
 <body>
@@ -975,6 +1005,26 @@
     document.querySelector('.cake-image-overlay').addEventListener('touchend', function() {
       clearTimeout(this._touchTimer);
     });
+
+    // ===== Add Neon Stars and Moon =====
+    function createStar() {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+      document.body.appendChild(star);
+      star.addEventListener('animationiteration', () => star.remove());
+    }
+    function createMoon() {
+      const moon = document.createElement('div');
+      moon.className = 'moon';
+      moon.style.left = Math.random() * 100 + 'vw';
+      moon.style.top = Math.random() * 100 + 'vh';
+      document.body.appendChild(moon);
+      moon.addEventListener('animationiteration', () => moon.remove());
+    }
+    createMoon();
+    setInterval(createStar, 400); // Create stars every 0.4 seconds
   </script>
 </body>
 </html>
