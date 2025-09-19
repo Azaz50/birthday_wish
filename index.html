@@ -9,249 +9,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: radial-gradient(circle at 20% 10%, #181c2b 0%, #1a1a2e 40%, #232946 100%);
-      --primary: #00fff7;
-      --accent: #ff3b7b;
+      /* Dark Mode Neon Theme */
+      --bg: #0f0f1a;
+      --primary: #ff3b7b;
+      --accent: #7c3aed;
       --gold: #ffd166;
       --mint: #2dd4bf;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --neon-pink: #ff3b7b;
-      --neon-blue: #00fff7;
-      --neon-purple: #a78bfa;
-      --neon-yellow: #ffd166;
-      --neon-green: #2fffa3;
-      --neon-shadow: 0 0 12px var(--primary), 0 0 24px var(--primary), 0 0 36px var(--primary);
-      --neon-shadow-pink: 0 0 12px var(--neon-pink), 0 0 24px var(--neon-pink), 0 0 36px var(--neon-pink);
-      --neon-shadow-blue: 0 0 12px var(--neon-blue), 0 0 24px var(--neon-blue), 0 0 36px var(--neon-blue);
-      --neon-shadow-purple: 0 0 12px var(--neon-purple), 0 0 24px var(--neon-purple), 0 0 36px var(--neon-purple);
-      --neon-shadow-yellow: 0 0 12px var(--neon-yellow), 0 0 24px var(--neon-yellow), 0 0 36px var(--neon-yellow);
-      --neon-shadow-green: 0 0 12px var(--neon-green), 0 0 24px var(--neon-green), 0 0 36px var(--neon-green);
+      --text-light: #e5e7eb;
+      --shadow: 0 10px 30px rgba(0,0,0,.3);
+      --neon-primary: 0 0 5px var(--primary), 0 0 15px var(--primary), 0 0 25px var(--primary);
+      --neon-accent: 0 0 5px var(--accent), 0 0 15px var(--accent), 0 0 25px var(--accent);
     }
     *{box-sizing: border-box}
     html,body{height:100%; margin:0; padding:0;}
+    body{ font-family: 'Poppins', sans-serif; color: var(--text-light); background: var(--bg); overflow-x:hidden; }
 
-    body{ font-family: 'Poppins', sans-serif; color:#e0e7ef; background: var(--bg); overflow-x:hidden; }
-
-    /* Neon Title & Subtitle */
-    .title{
-      font-family:'Pacifico', cursive;
-      font-size: clamp(26px, 7vw, 52px);
-      margin:0;
-      color:var(--primary);
-      text-shadow: 0 0 8px #00fff7, 0 0 16px #00fff7, 0 0 32px #00fff7, 0 0 48px #00fff7;
-      letter-spacing: 1.5px;
-      filter: brightness(1.3);
-    }
-    .title span {
-      color: var(--neon-pink);
-      text-shadow: 0 0 8px #ff3b7b, 0 0 16px #ff3b7b, 0 0 32px #ff3b7b;
-
-      filter: brightness(1.5);
-    }
-    .subtitle{
-      margin:6px 0 0;
-      font-weight:600;
-      color:#fff;
-      font-size: clamp(14px, 3.8vw, 20px);
-      text-shadow: 0 2px 8px #232946, 0 0 2px #a78bfa, 0 0 12px #181c2b;
-
-      filter: brightness(1.2);
-      background: rgba(39, 24, 60, 0.55);
-      padding: 6px 18px;
-      border-radius: 16px;
-      display: inline-block;
-      box-shadow: 0 2px 12px 0 #181c2b33;
-    }
-
-    /* Neon Card & Message */
-    .card{
-      background:rgba(24,28,43,0.96); /* darker background for dark theme */
-      backdrop-filter: blur(12px);
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 0 24px 2px #00fff7, 0 0 48px 8px #ff3b7b44, var(--shadow);
-      border: 2.5px solid #00fff7;
-    }
-    .message.card {
-      box-shadow: 0 0 24px 2px #ff3b7b, 0 0 48px 8px #00fff744, var(--shadow);
-      border: 2.5px solid #ff3b7b;
-      background:rgba(24,28,43,0.98); /* even darker for message box */
-    }
-    .type{
-      font-size: clamp(15px, 1.9vw, 18px);
-      line-height:1.7;
-      min-height:80px;
-      white-space:pre-wrap;
-
-      color: #fff;
-      text-shadow: 0 0 8px #00fff7, 0 0 16px #00fff7, 0 0 32px #00fff7, 0 0 48px #00fff7;
-      filter: brightness(1.2);
-    }
-    .tag{
-      display:inline-block;
-      padding:6px 10px;
-      background:rgba(24,28,43,0.7);
-      border:1.5px dashed #00fff7;
-      border-radius: 999px;
-      font-size:12px;
-      margin-top:10px;
-      color: #00fff7;
-
-      text-shadow: 0 0 8px #00fff7;
-    }
-
-    /* Neon Image Box */
-    .cake-image-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-      position: relative;
-      border-radius: 50%;
-      background: transparent;
-      box-shadow: none;
-      border: none;
-    }
-    .cake-image {
-      max-width: 98vw;
-      max-height: 38vh;
-      border-radius: 50%;
-
-      aspect-ratio: 1/1;
-      object-fit: cover;
-      box-shadow: none;
-      border: none;
-      filter: brightness(1.15);
-      image-rendering: crisp-edges;
-      background: #181c2b;
-    }
-
-    .cake-image-overlay {
-      box-shadow: none;
-      border: none;
-      background: none;
-    }
-    @media (max-width: 600px) {
-      .cake-image {
-        max-width: 70vw;
-        max-height: 30vh;
-      }
-    }
-    .cake-image1 {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 6px 2px #ff3b7b, 0 0 10px 2px #00fff7;
-      border: 2.5px solid #ff3b7b;
-      background: #181c2b;
-      z-index: 2;
-      position: absolute;
-      filter: brightness(1.1) drop-shadow(0 0 4px #ff3b7b);
-    }
-    @media (max-width: 900px) {
-      .cake-image1 {
-        width: 64px;
-        height: 64px;
-      }
-    }
-    @media (max-width: 600px) {
-      .cake-image1 {
-        width: 54px;
-        height: 54px;
-        border-width: 1.5px;
-      }
-    }
-    .improved-cake {
-      filter: drop-shadow(0 0 10px #00fff7) drop-shadow(0 0 6px #ff3b7b);
-    }
-    .cake-image-overlay {
-      box-shadow: none;
-      border: none;
-      background: none;
-
-    }
-    @media (max-width: 600px) {
-      .cake-image {
-        max-width: 70vw;
-        max-height: 30vh;
-      }
-    }
-    .cake-image1 {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 6px 2px #ff3b7b, 0 0 10px 2px #00fff7;
-      border: 2.5px solid #ff3b7b;
-      background: #181c2b;
-      z-index: 2;
-      position: absolute;
-      filter: brightness(1.1) drop-shadow(0 0 4px #ff3b7b);
-    }
-    @media (max-width: 900px) {
-      .cake-image1 {
-        width: 64px;
-        height: 64px;
-      }
-    }
-    @media (max-width: 600px) {
-      .cake-image1 {
-        width: 54px;
-        height: 54px;
-        border-width: 1.5px;
-      }
-    }
-    .improved-cake {
-      filter: drop-shadow(0 0 10px #00fff7) drop-shadow(0 0 6px #ff3b7b);
-    }
-    .cake-image-overlay {
-      box-shadow: none;
-      border: none;
-      background: none;
-    }
-
-    /* Neon Balloons */
-    .balloon{
-      position:absolute;
-      bottom:-120px;
-      font-size: 44px;
-
-      /* Reduced neon glow */
-      filter: drop-shadow(0 0 6px #00fff7) drop-shadow(0 0 10px #ff3b7b);
-      animation: float 8s linear infinite;
-      text-shadow: 0 0 4px #00fff7, 0 0 8px #ff3b7b, 0 0 12px #ff3b7b;
-    }
-    .b1{ left:4%; animation-duration: 8s; color: #00fff7; text-shadow: 0 0 4px #00fff7, 0 0 8px #00fff7;}
-    .b2{ left:20%; animation-duration: 10s; color: #ff3b7b; text-shadow: 0 0 4px #ff3b7b, 0 0 8px #ff3b7b;}
-    .b3{ left:38%; animation-duration: 11s; color: #ffd166; text-shadow: 0 0 4px #ffd166, 0 0 8px #ffd166;}
-    .b4{ left:62%; animation-duration: 12s; color: #a78bfa; text-shadow: 0 0 4px #a78bfa, 0 0 8px #a78bfa;}
-    .b5{ left:80%; animation-duration: 13s; color: #2fffa3; text-shadow: 0 0 4px #2fffa3, 0 0 8px #2fffa3;}
-    .b6{ left:8%; animation-duration: 15s; border-color: #00fff7; box-shadow: 0 0 8px 2px #00fff7;}
-    .b7{ left:35%; animation-duration: 17s; border-color: #ff3b7b; box-shadow: 0 0 8px 2px #ff3b7b;}
-    .b8{ left:70%; animation-duration: 19s; border-color: #ffd166; box-shadow: 0 0 8px 2px #ffd166;}
-    .b9{ left:65%; animation-duration: 21s; border-color: #a78bfa; box-shadow: 0 0 8px 2px #a78bfa;}
-    .b10{ left:95%; animation-duration: 23s; border-color: #2fffa3; box-shadow: 0 0 8px 2px #2fffa3;}
-    @keyframes float {
-        0%{ transform: translateY(0) } 100%{ transform: translateY(-120vh) }
-    }
-
-    .stars{position: fixed; inset:0; pointer-events:none; opacity:1; background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 40px 40px; animation: twinkle 4s linear infinite;}
+    /* layout */
+    .stars{position: fixed; inset:0; pointer-events:none; opacity:1; background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 40px 40px; animation: twinkle 3s linear infinite;}
     @keyframes twinkle{ from{transform:translateY(0)} to{transform:translateY(-40px)} }
     header{text-align:center; padding:18px 14px 6px}
-    .title{font-family:'Pacifico', cursive; font-size: clamp(26px, 7vw, 52px); margin:0; color:#111827;}
-    .subtitle{margin:6px 0 0; font-weight:600; color:var(--accent); font-size: clamp(14px, 3.8vw, 20px);}
+    .title{font-family:'Pacifico', cursive; font-size: clamp(26px, 7vw, 52px); margin:0; color:#fff; text-shadow: var(--neon-primary);}
+    .subtitle{margin:6px 0 0; font-weight:600; color:var(--accent); font-size: clamp(14px, 3.8vw, 20px); text-shadow: var(--neon-accent);}
 
     .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; max-width:1100px; margin:12px auto; padding: 0 18px;}
     @media (max-width:900px){ .hero{grid-template-columns:1fr; text-align:center} }
 
-    .card{background:#ffffffdd; backdrop-filter: blur(8px); border-radius: 18px; padding: 18px; box-shadow: var(--shadow);}
+    .card{background: #1a1a2e88; backdrop-filter: blur(8px); border-radius: 18px; padding: 18px; box-shadow: var(--neon-accent), inset 0 0 12px #7c3aed44; border: 1px solid #7c3aed88;}    
 
     /* cake stage */
     .stage{ position:relative; height:360px; display:flex; align-items:flex-end; justify-content:center; overflow:visible; }
     @media (max-width:480px){ .stage{ height:220px } }
-    .plate{position:absolute; bottom:12px; width:90%; max-width:520px; height:18px; border-radius:12px; background:#f0f4ff; box-shadow: inset 0 -6px 0 #d8e2ff, 0 8px 18px rgba(0,0,0,.12);}    
+    .plate{position:absolute; bottom:12px; width:90%; max-width:520px; height:18px; border-radius:12px; background:#2c2c3e; box-shadow: inset 0 -6px 0 #1e1e2a, 0 8px 18px rgba(0,0,0,.25);}    
     svg.cake{ width:100%; max-width:420px; height:auto; filter: drop-shadow(0 12px 18px rgba(0,0,0,.18)); display:block; margin: 0 auto }
 
     .flame { transform-origin: 50% 100%; animation: flicker .12s infinite alternate ease-in-out; }
@@ -259,7 +47,7 @@
     .glow { filter: blur(6px); opacity:.6; animation: glow 1.5s ease-in-out infinite alternate; }
     @keyframes glow { from{opacity:.35} to{opacity:.75} }
 
-    .balloon{ position:absolute; bottom:-120px; font-size: 44px; filter: drop-shadow(0 6px 8px rgba(0,0,0,.2)); animation: float 8s linear infinite; }
+    .balloon{ position:absolute; bottom:-120px; font-size: 44px; filter: drop-shadow(0 0 8px var(--primary)); animation: float 8s linear infinite; }
     .b1{ left:4%; animation-duration: 8s}
     .b2{ left:20%; animation-duration: 10s}
     .b3{ left:38%; animation-duration: 11s}
@@ -273,88 +61,25 @@
     @keyframes float { 0%{ transform: translateY(0) } 100%{ transform: translateY(-120vh) } }
 
     .controls{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
-    .btn{appearance:none; border:none; padding:10px 14px; border-radius: 999px; cursor:pointer; font-weight:600; letter-spacing:.2px; background: linear-gradient(135deg, var(--primary), #ff809f); color:white; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .15s ease, filter .15s ease; }
-    .btn:hover{ transform: translateY(-2px); filter: brightness(1.05)}
-    .btn.secondary{ background: linear-gradient(135deg, var(--accent), #a78bfa)}
-    .btn.ghost{ background:#fff; color:#374151; border:1px solid #e5e7eb }
+    .btn{appearance:none; border:none; padding:10px 14px; border-radius: 999px; cursor:pointer; font-weight:600; letter-spacing:.2px; background: var(--primary); color:white; box-shadow: var(--neon-primary); transition: transform .15s ease, box-shadow .15s ease; }
+    .btn:hover{ transform: translateY(-2px); box-shadow: 0 0 8px var(--primary), 0 0 18px var(--primary), 0 0 30px var(--primary);}
+    .btn.secondary{ background: var(--accent); box-shadow: var(--neon-accent); }
+    .btn.secondary:hover{ box-shadow: 0 0 8px var(--accent), 0 0 18px var(--accent), 0 0 30px var(--accent); }
+    .btn.ghost{ background:transparent; color:var(--text-light); border:1px solid var(--accent); box-shadow: none; }
 
-    .message.card{ margin-top:12px }
-    .type{font-size: clamp(15px, 1.9vw, 18px); line-height:1.7; min-height:80px; white-space:pre-wrap;}
-    .tag{ display:inline-block; padding:6px 10px; background:linear-gradient(135deg, #ff3b7b, #a78bfa) !important; border:1px dashed #e5e7eb; border-radius: 999px; font-size:12px; margin-top:10px; }
+    .message.card{ margin-top:12px; box-shadow: var(--neon-primary), inset 0 0 12px #ff3b7b44; border-color: #ff3b7b88; }
+    .type{font-size: clamp(15px, 1.9vw, 18px); line-height:1.7; min-height:80px; white-space:pre-wrap; color: #fff; text-shadow: 0 0 4px #fff, 0 0 12px #fff, 0 0 24px #fff;}
+    .tag{ display:inline-block; padding:6px 10px; background:transparent; border:1px dashed var(--accent); border-radius: 999px; font-size:12px; margin-top:10px; }
 
     canvas#confetti{ position:fixed; inset:0; pointer-events:none }
 
     .heart{ position: fixed; pointer-events:none; font-size: 18px; animation: pop 1.2s ease forwards; opacity:.9; }
     @keyframes pop{ 0%{ transform: translate(-50%, -50%) scale(.6); opacity:1 } 100%{ transform: translate(-50%,-120%) scale(1.6); opacity:0 } }
 
-    footer{ text-align:center; padding:18px; color:#7c3aed; font-size:13px; text-shadow: 0 0 8px #00fff7, 0 0 16px #ff3b7b; }
-
-    /* Responsive Birthday Image */
-    .cake-image-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-      position: relative;
-      border-radius: 50%;
-      background: transparent;
-      box-shadow: none;
-      border: none;
-    }
-    .cake-image {
-      max-width: 98vw;
-      max-height: 38vh;
-      border-radius: 50%; /* Make image circular */
-      aspect-ratio: 1/1;
-      object-fit: cover;
-      box-shadow: none;
-      border: none;
-      filter: brightness(1.15);
-      image-rendering: crisp-edges;
-      background: #181c2b;
-    }
-    @media (max-width: 600px) {
-      .cake-image {
-        max-width: 70vw;
-        max-height: 30vh;
-      }
-
-    }
-    .cake-image1 {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 6px 2px #ff3b7b, 0 0 10px 2px #00fff7;
-      border: 2.5px solid #ff3b7b;
-      background: #181c2b;
-      z-index: 2;
-      position: absolute;
-
-      filter: brightness(1.1) drop-shadow(0 0 4px #ff3b7b);
-    }
-    @media (max-width: 900px) {
-      .cake-image1 {
-        width: 64px;
-
-        height: 64px;
-      }
-    }
-    @media (max-width: 600px) {
-      .cake-image1 {
-        width: 54px;
-        height: 54px;
-        border-width: 1.5px;
-      }
-    }
+    footer{ text-align:center; padding:18px; color:#6b7280; font-size:13px }
+    
     .improved-cake {
-      filter: drop-shadow(0 0 10px #00fff7) drop-shadow(0 0 6px #ff3b7b);
-    }
-    .cake-image-overlay {
-      box-shadow: none;
-      border: none;
-      background: none;
+      filter: drop-shadow(0 16px 32px #ffbcd4) drop-shadow(0 2px 8px #ffd166);
     }
 
     /* Fullscreen screenshot warning overlay */
@@ -362,8 +87,8 @@
       position: fixed;
       z-index: 99999;
       inset: 0;
-      background: rgba(10,10,20,0.98);
-      color: #00fff7;
+      background: rgba(0,0,0,0.88);
+      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -373,8 +98,6 @@
       text-align: center;
       padding: 32px;
       transition: opacity 0.3s;
-      text-shadow: 0 0 8px #00fff7, 0 0 16px #ff3b7b;
-      box-shadow: 0 0 32px 8px #00fff7, 0 0 64px 16px #ff3b7b44;
     }
     .screenshot-warning-overlay button {
       margin-top: 32px;
@@ -386,63 +109,11 @@
       color: #fff;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 0 16px #ff3b7b, 0 0 32px #00fff7;
+      box-shadow: 0 4px 16px rgba(0,0,0,.18);
       transition: background 0.2s;
-      text-shadow: 0 0 8px #fff;
     }
     .screenshot-warning-overlay button:hover {
-      background: #00fff7;
-      color: #181c2b;
-    }
-
-    /* --- DARK MODE OVERRIDES --- */
-    body {
-      background: var(--bg) !important;
-      color: #f3f6fa !important;
-    }
-    .card, .message.card {
-      background: rgba(18,20,32,0.98) !important;
-      border-color: #00fff7 !important;
-      box-shadow: 0 0 32px 8px #00fff7, 0 0 64px 16px #ff3b7b44 !important;
-    }
-    .type, .tag, .subtitle, .title, .message.card h2 {
-      color: #fff !important;
-      text-shadow: 0 0 8px #00fff7, 0 0 16px #00fff7, 0 0 32px #00fff7, 0 0 48px #00fff7 !important;
-    }
-    .cake-image-container {
-      background: transparent !important;
-      box-shadow: none !important;
-      border: none !important;
-    }
-    .cake-image {
-      background: #181c2b !important;
-      box-shadow: none !important;
-      border: none !important;
-    }
-    .cake-image-overlay {
-      box-shadow: none !important;
-      border: none !important;
-      background: none !important;
-    }
-    .cake-image1 {
-      background: #181c2b !important;
-    }
-    .btn {
-      background: linear-gradient(135deg, #00fff7, #ff3b7b) !important;
-      color: #fff !important;
-      box-shadow: 0 0 16px #00fff7, 0 0 32px #ff3b7b !important;
-    }
-    .btn.ghost {
-      background: #232946 !important;
-      color: #00fff7 !important;
-      border: 1.5px solid #00fff7 !important;
-    }
-    .btn.secondary {
-      background: linear-gradient(135deg, #ff3b7b, #a78bfa) !important;
-    }
-    footer {
-      color: #00fff7 !important;
-      text-shadow: 0 0 8px #00fff7, 0 0 16px #ff3b7b !important;
+      background: #7c3aed;
     }
   </style>
 </head>
@@ -455,11 +126,6 @@
 
   <main class="hero">
     <section class="card">
-      <!-- Responsive Birthday Image -->
-      <!-- <div class="cake-image-container">
-        <img src="image.jpeg" alt="Birthday Pic" class="cake-image" draggable="false" />
-        <div class="cake-image-overlay"></div>
-      </div> -->
 
       <div class="stage" role="img" aria-label="Birthday cake scene">
         <div class="plate" aria-hidden="true"></div>
@@ -470,98 +136,57 @@
         <div class="balloon b3" aria-hidden="true">🎈</div>
         <div class="balloon b4" aria-hidden="true">🎈</div>
         <div class="balloon b5" aria-hidden="true">🎈</div>
-        <img src="image.jpeg" alt="Birthday Pic" class="cake-image1 balloon b6" aria-hidden="true"/>
-        <img src="image2.jpeg" alt="Birthday Pic" class="cake-image1 balloon b7" aria-hidden="true"/>
-        <img src="image3.jpeg" alt="Birthday Pic" class="cake-image1 balloon b8" aria-hidden="true"/>
-        <img src="image4.jpeg" alt="Birthday Pic" class="cake-image1 balloon b9" aria-hidden="true"/>
-        <img src="image5.jpeg" alt="Birthday Pic" class="cake-image1 balloon b10" aria-hidden="true"/>
 
 
         <!-- Cake (SVG) -->
-        <svg class="cake improved-cake" viewBox="0 0 420 400" xmlns="http://www.w3.org/2000/svg" aria-label="Birthday cake">
-          <defs>
-            <!-- Gradients for cake layers -->
-            <radialGradient id="cakeBaseGrad" cx="50%" cy="60%" r="80%">
-              <stop offset="0%" stop-color="#ffe4ec"/>
-              <stop offset="60%" stop-color="#ffd1dc"/>
-              <stop offset="100%" stop-color="#e5a6c6"/>
-            </radialGradient>
-            <linearGradient id="cakeLayer1" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ffe4ec"/>
-              <stop offset="100%" stop-color="#e5a6c6"/>
-            </linearGradient>
-            <linearGradient id="cakeLayer2" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#fff7e6"/>
-              <stop offset="100%" stop-color="#ffd166"/>
-            </linearGradient>
-            <linearGradient id="cakeLayer3" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#e0c3fc"/>
-              <stop offset="100%" stop-color="#a78bfa"/>
-            </linearGradient>
-            <radialGradient id="icingGrad1" cx="50%" cy="40%" r="80%">
-              <stop offset="0%" stop-color="#fff"/>
-              <stop offset="80%" stop-color="#ffbcd4"/>
-              <stop offset="100%" stop-color="#ffb7ef"/>
-            </radialGradient>
-            <radialGradient id="icingGrad2" cx="50%" cy="40%" r="80%">
-              <stop offset="0%" stop-color="#fff"/>
-              <stop offset="80%" stop-color="#ffe4ec"/>
-              <stop offset="100%" stop-color="#ffd1dc"/>
-            </radialGradient>
-            <radialGradient id="icingGrad3" cx="50%" cy="40%" r="80%">
-              <stop offset="0%" stop-color="#fff"/>
-              <stop offset="80%" stop-color="#e0c3fc"/>
-              <stop offset="100%" stop-color="#a78bfa"/>
-            </radialGradient>
-            <filter id="cakeGlow" x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-          <!-- Shadow -->
-          <ellipse cx="210" cy="370" rx="100" ry="16" fill="#22262e" opacity="0.32"/>
-
-          <!-- Bottom Layer -->
-          <ellipse cx="210" cy="340" rx="120" ry="32" fill="url(#cakeBaseGrad)" filter="url(#cakeGlow)"/>
-          <rect x="70" y="240" width="280" height="100" rx="36" fill="url(#cakeLayer1)" filter="url(#cakeGlow)"/>
-          <!-- Icing Drip Bottom -->
-          <path d="M90,250 Q110,270 130,250 Q150,270 170,250 Q190,270 210,250 Q230,270 250,250 Q270,270 290,250 Q310,270 330,250 Q350,270 350,250 Q350,290 210,290 Q70,290 70,250 Q90,270 90,250 Z" fill="url(#icingGrad1)" opacity="0.92"/>
-
-          <!-- Middle Layer -->
-          <ellipse cx="210" cy="250" rx="100" ry="28" fill="url(#cakeLayer2)" filter="url(#cakeGlow)"/>
-          <rect x="110" y="170" width="200" height="80" rx="28" fill="url(#cakeLayer2)" filter="url(#cakeGlow)"/>
-          <!-- Icing Drip Middle -->
-          <path d="M130,180 Q145,200 160,180 Q175,200 190,180 Q205,200 220,180 Q235,200 250,180 Q265,200 280,180 Q295,200 310,180 Q325,200 325,180 Q325,210 210,210 Q95,210 95,180 Q130,200 130,180 Z" fill="url(#icingGrad2)" opacity="0.92"/>
-
-          <!-- Top Layer -->
-          <ellipse cx="210" cy="170" rx="80" ry="22" fill="url(#cakeLayer3)" filter="url(#cakeGlow)"/>
-          <rect x="130" y="110" width="160" height="60" rx="22" fill="url(#cakeLayer3)" filter="url(#cakeGlow)"/>
-          <!-- Icing Drip Top -->
-          <path d="M150,120 Q160,140 170,120 Q180,140 190,120 Q200,140 210,120 Q220,140 230,120 Q240,140 250,120 Q260,140 270,120 Q280,140 280,120 Q280,150 210,150 Q140,150 140,120 Q150,140 150,120 Z" fill="url(#icingGrad3)" opacity="0.92"/>
-
-          <!-- Sprinkles and Fruit on Top -->
+        <svg class="cake improved-cake" viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg" aria-label="Birthday cake">
+          <!-- Frosting Swirls on top -->
           <g>
-            <circle cx="170" cy="130" r="4" fill="#ff3b7b"/>
-            <circle cx="210" cy="120" r="3.5" fill="#ffd166"/>
-            <circle cx="250" cy="130" r="4" fill="#7c3aed"/>
-            <ellipse cx="190" cy="140" rx="3" ry="2" fill="#2dd4bf"/>
-            <ellipse cx="230" cy="140" rx="3" ry="2" fill="#00fff7"/>
-            <circle cx="210" cy="135" r="2.5" fill="#fff"/>
-            <!-- Fruit (strawberry) -->
-            <ellipse cx="210" cy="125" rx="7" ry="5" fill="#ff3b7b" stroke="#fff" stroke-width="1"/>
-            <ellipse cx="210" cy="122" rx="2" ry="1.2" fill="#ffd166"/>
+            <circle cx="150" cy="115" r="15" fill="#ffb2c6"/>
+            <circle cx="185" cy="108" r="18" fill="#ffb2c6"/>
+            <circle cx="225" cy="108" r="18" fill="#ffb2c6"/>
+            <circle cx="260" cy="115" r="15" fill="#ffb2c6"/>
+            <circle cx="210" cy="120" r="20" fill="#ffb2c6"/>
+          </g>
+
+          <!-- Layer 1 (Bottom) -->
+          <rect x="70" y="240" width="280" height="80" rx="18" fill="#ffd1dc"/>
+          <rect x="70" y="270" width="280" height="18" fill="#ffe4ec"/>
+          <!-- Frosting Drips for Layer 1 -->
+          <path d="M 70 240 q 20 25 40 5 q 20 -20 40 0 q 20 20 40 -5 q 20 25 40 0 q 20 -20 40 5 q 20 25 40 0 q 20 -20 40 -5" fill="#ffc4e1" stroke="#ffc4e1" stroke-width="12" stroke-linecap="round"/>
+
+          <!-- Layer 2 (Middle) -->
+          <rect x="95" y="170" width="230" height="70" rx="16" fill="#ffc4e1"/>
+          <rect x="95" y="198" width="230" height="14" fill="#ffe4ec"/>
+          <!-- Frosting Drips for Layer 2 -->
+          <path d="M 95 170 q 20 20 35 5 q 15 -15 35 0 q 20 20 35 -5 q 15 20 35 0 q 20 -15 35 5 q 15 20 35 0" fill="#ffbcd4" stroke="#ffbcd4" stroke-width="12" stroke-linecap="round"/>
+
+          <!-- Layer 3 (Top) -->
+          <rect x="125" y="118" width="170" height="52" rx="14" fill="#ffbcd4"/>
+          <!-- Frosting Drips for Layer 3 -->
+          <path d="M 125 118 q 15 15 30 0 q 15 -15 30 5 q 15 10 30 0 q 15 -15 30 -5 q 15 10 30 0" fill="#ffb2c6" stroke="#ffb2c6" stroke-width="12" stroke-linecap="round"/>
+
+          <!-- Sprinkles -->
+          <g fill="#fff" opacity="0.7">
+            <circle cx="140" cy="255" r="3"/><circle cx="170" cy="265" r="3"/><circle cx="200" cy="250" r="3"/><circle cx="260" cy="260" r="3"/><circle cx="300" cy="252" r="3"/>
+            <circle cx="130" cy="190" r="3"/><circle cx="160" cy="200" r="3"/><circle cx="220" cy="195" r="3"/><circle cx="280" cy="192" r="3"/>
+            <circle cx="155" cy="138" r="3"/><circle cx="205" cy="140" r="3"/><circle cx="255" cy="135" r="3"/>
+          </g>
+          <g fill="#7c3aed" opacity="0.6">
+            <circle cx="155" cy="258" r="2.5"/><circle cx="220" cy="262" r="2.5"/><circle cx="280" cy="255" r="2.5"/>
+            <circle cx="145" cy="195" r="2.5"/><circle cx="250" cy="198" r="2.5"/>
+            <circle cx="180" cy="139" r="2.5"/><circle cx="230" cy="136" r="2.5"/>
           </g>
 
           <!-- Candle -->
           <rect id="candle" x="202" y="74" width="16" height="40" rx="4" fill="#7c3aed"/>
           <rect x="202" y="108" width="16" height="6" rx="3" fill="#a78bfa"/>
           <rect id="wick" x="209.5" y="64" width="2.8" height="12" rx="1" fill="#111827"/>
+
+          <!-- Flame -->
           <g id="flameGroup" style="display:none">
-            <path class="flame" d="M211 54 q-12 16 0 28 q12-12 0-28z" fill="#ffb703"/>
-            <path class="flame glow" d="M211 54 q-12 16 0 28 q12-12 0-28z" fill="#ffd166"/>
+            <path class="flame" d="M211 44 q-12 16 0 28 q12-12 0-28z" fill="#ffb703"/>
+            <path class="flame glow" d="M211 44 q-12 16 0 28 q12-12 0-28z" fill="#ffd166"/>
           </g>
         </svg>
       </div>
@@ -569,9 +194,9 @@
       <div class="controls" role="region" aria-label="Cake controls">
         <button class="btn" id="lightBtn" aria-pressed="false">🕯️ Light Candle</button>
         <button class="btn" id="soundBtn">🔊 Play Wish</button>
-        <button class="btn ghost" id="confettiBtn">🎊 Confetti</button>
+        <button class="btn secondary" id="confettiBtn">🎊 Confetti</button>
         <button class="btn secondary" id="blowBtn">🌬️ Make a Wish</button>
-        <button class="btn ghost" id="stopSoundBtn">⏹️ Stop</button>
+        <button class="btn" id="stopSoundBtn">⏹️ Stop</button>
       </div>
     </section>
 
@@ -616,12 +241,9 @@
 
     // ===== Candle controls =====
     const flameGroup = document.getElementById('flameGroup');
-  const lightBtn = document.getElementById('lightBtn');
+    const lightBtn = document.getElementById('lightBtn');
     const blowBtn  = document.getElementById('blowBtn');
     let lit = false;
-    
-    // Pre-fetch flameGroup element
-    const flameGroupStyle = flameGroup.style;
 
     lightBtn.addEventListener('click', () => {
       if (flameGroup.style.display === 'none' || flameGroup.style.display === '') {
@@ -677,7 +299,7 @@
     window.addEventListener('pointermove', e => { if(e.pressure>0 || e.buttons) popHeart(e)});
     function popHeart(e){ const h = document.createElement('div'); h.className = 'heart'; h.textContent = hearts[Math.random()*hearts.length|0]; h.style.left = e.clientX+'px'; h.style.top = e.clientY+'px'; document.body.appendChild(h); setTimeout(()=> h.remove(), 1300); }
 
-    setTimeout(() => emitConfetti(220), 800);
+    setTimeout(()=> emitConfetti(220), 800);
 
     /* ===== SOUND: Web Speech + Web Audio fallback =====
        Strategy:
@@ -687,9 +309,7 @@
        This avoids loading external audio files that may trigger NotSupportedError.
     */
 
-
-
-  const soundBtn = document.getElementById('soundBtn');
+    const soundBtn = document.getElementById('soundBtn');
     const stopBtn = document.getElementById('stopSoundBtn');
     let audioCtx = null; // AudioContext used for melody
     let scheduledClose = null;
@@ -735,7 +355,7 @@
           const o = audioCtx.createOscillator();
           o.type = 'triangle';
           o.frequency.value = note.f;
-            o.connect(gain);
+          o.connect(gain);
           const start = now + offset;
           const stop = start + note.d * 0.95;
           o.start(start);
@@ -768,7 +388,7 @@
 
     soundBtn.addEventListener('click', async () => {
       // On click: speak the wish, then play melody. Both are user-gesture initiated.
-      //   const said = speakText('Happy Birthday, my Gulabo Rani. Wishing you joy, love and endless smiles.');
+    //   const said = speakText('Happy Birthday, my Gulabo Rani. Wishing you joy, love and endless smiles.');
       const played = playMelody();
       // If both failed (older browser), show a message
       if(!said && !played){
@@ -788,10 +408,10 @@
     window.addEventListener('pagehide', () => stopAllSound());
 
     window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => playMelody(true), 200); // Start melody ASAP after DOMContentLoaded
+      playMelody(true); // auto play and repeat melody on page load
     });
 
-
+    
     // ===== Shayari cycling (show main message first, then cycle shayari) =====
     const shayariList = [
       `✨Har subah tere liye nayi roshni ka paighaam ho,
@@ -815,9 +435,6 @@
       'जन्मदिन मुबारक हो मेरे प्यारे दोस्त, \nतेरी खुशियों का सिलसिला कभी ना थमे,\nदुआ है मेरी – तेरा हर कल,\nतेरे आज से भी ज़्यादा रोशन जले।',
       'कभी राह में अकेला महसूस ना करना,\nसच्चे दोस्तों का हाथ कभी छोड़ना मत।\nमेहनत से अपनी तक़दीर को सजाना,\nभविष्य में कामयाबी तेरा कदम चूमेगी बस ये मानना।\n\nजन्मदिन की हार्दिक शुभकामनाएं मेरे दोस्त,\nतेरे लिए मेरी दुआएं हमेशा रहें सच्ची और सदा।',
       'तेरी दोस्ती मेरी ज़िंदगी की राहत है,\nतेरे बिना हर महफ़िल अधूरी सी लगती है।\nतेरी हँसी में छुपा है मेरा सुकून,\nतेरे बिना ये दिल कुछ भी अधूरा-सा लगता है।'
-
-
-
     ];
     let shayariIndex = 0;
     function typeShayari(msg) {
@@ -826,7 +443,7 @@
       function type() {
         if(i <= msg.length){
           box.textContent = msg.slice(0,i++);
-          setTimeout(type, 30);
+          setTimeout(type, 24);
         }
       }
       type();
@@ -834,179 +451,26 @@
     function cycleShayari() {
       typeShayari(shayariList[shayariIndex]);
       shayariIndex = (shayariIndex + 1) % shayariList.length;
-      setTimeout(cycleShayari, 30000); // change every 24 seconds
+      setTimeout(cycleShayari, 24000); // change every 24 seconds
     }
     // Show main message first, then start shayari cycling after 24s
     typeShayari(msg);
     setTimeout(cycleShayari, 24000);
 
-    // ===== Image Zoom (Mobile + Desktop) =====
-    const cakeImg = document.querySelector('.cake-image');
-    let scale = 1, lastScale = 1, startX = 0, startY = 0, lastX = 0, lastY = 0;
-    let isDragging = false;
-    function setTransform() {
-      cakeImg.style.transform = `scale(${scale}) translate(${lastX}px,${lastY}px)`;
-    }
-    cakeImg.addEventListener('touchstart', function(e) {
-      if(e.touches.length === 2){
-        const dx = e.touches[0].clientX - e.touches[1].clientX;
-        const dy = e.touches[0].clientY - e.touches[1].clientY;
-        cakeImg._startDist = Math.hypot(dx, dy);
-        cakeImg._startScale = scale;
-      } else if(e.touches.length === 1){
-        isDragging = true;
-        startX = e.touches[0].clientX - lastX;
-        startY = e.touches[0].clientY - lastY;
-      }
-    }, {passive:false});
-    cakeImg.addEventListener('touchmove', function(e) {
-      if(e.touches.length === 2){
-        const dx = e.touches[0].clientX - e.touches[1].clientX;
-        const dy = e.touches[0].clientY - e.touches[1].clientY;
-        const dist = Math.hypot(dx, dy);
-        scale = Math.max(1, Math.min(3, cakeImg._startScale * dist / cakeImg._startDist));
-        setTransform();
-        e.preventDefault();
-      } else if(isDragging && e.touches.length === 1){
-        lastX = e.touches[0].clientX - startX;
-        lastY = e.touches[0].clientY - startY;
-        setTransform();
-        e.preventDefault();
-      }
-    }, {passive:false});
-    cakeImg.addEventListener('touchend', function(e){
-      if(e.touches.length === 0){ isDragging = false; }
-    });
-    cakeImg.addEventListener('dblclick', function(){
-      scale = scale < 2 ? 2 : 1;
-      lastX = lastY = 0;
-      setTransform();
-    });
-    // Desktop zoom (wheel)
-    cakeImg.addEventListener('wheel', function(e){
-      scale += e.deltaY < 0 ? 0.15 : -0.15;
-      scale = Math.max(1, Math.min(3, scale));
-      setTransform();
-      e.preventDefault();
-    });
-
-    // ===== Birthday Pic Slideshow =====
-    const cakeImages = [
-      'image.jpeg',
-
-      'image2.jpeg',
-
-      'image3.jpeg',
-      'image4.jpeg',
-      'image5.jpeg',
-
-      'image6.jpeg'
-
-    ];
-    const cakeImgEl = document.querySelector('.cake-image');
-    let cakeImgIdx = 0;
-    setInterval(() => {
-      cakeImgIdx = (cakeImgIdx + 1) % cakeImages.length;
-      cakeImgEl.src = cakeImages[cakeImgIdx];
-    }, 4000);
-
     // ===== Balloon Burst on Touch/Click =====
-    const balloonClass = 'balloon';
     function burstBalloon(e) {
       const balloon = e.currentTarget;
       balloon.style.transition = 'transform 0.32s cubic-bezier(.4,2,.3,1), opacity 0.32s';
       balloon.style.transform = 'scale(1.5) rotate(-18deg)';
       balloon.style.opacity = '0';
       balloon.style.pointerEvents = 'none';
-      setTimeout(() => {
-        balloon.remove();
-      }, 320);
+      setTimeout(() => balloon.remove(), 320);
       e.stopPropagation();
     }
-    const balloons = document.querySelectorAll('.' + balloonClass);
-    balloons.forEach(b => {
-        b.addEventListener('click', burstBalloon);
-        b.addEventListener('touchstart', burstBalloon, {passive: true});
-    });
-
-    // ===== Prevent Save/Download/Context Menu/Screenshot (Best Effort) =====
-    // Disable right-click/context menu everywhere
-    document.addEventListener('contextmenu', function(e) {
-      if (e.target.classList.contains('cake-image') || e.target.classList.contains('cake-image-overlay')) {
-        alert('Saving or downloading this photo is not allowed.');
-        e.preventDefault();
-      } else {
-        e.preventDefault();
-      }
-    });
-    // Prevent drag on main image
-    document.querySelector('.cake-image').addEventListener('dragstart', e => e.preventDefault());
-    // Prevent overlay interaction (block pointer events)
-    document.querySelector('.cake-image-overlay').addEventListener('pointerdown', e => {
-      e.preventDefault();
-      alert('Saving or downloading this photo is not allowed.');
-    });
-    // Attempt to block PrintScreen (not foolproof)
-    document.addEventListener('keyup', function(e) {
-      if (e.key === 'PrintScreen') {
-        alert('Screenshots are not allowed on this page.');
-      }
-    });
-    // Prevent select/copy on image
-    document.querySelector('.cake-image').addEventListener('selectstart', e => e.preventDefault());
-
-    // ===== Screenshot warning overlay (single, reliable) =====
-    function showScreenshotWarning() {
-      if (document.getElementById('screenshot-warning-overlay')) return;
-      const overlay = document.createElement('div');
-      overlay.className = 'screenshot-warning-overlay';
-      overlay.id = 'screenshot-warning-overlay';
-      overlay.innerHTML = `
-
-        <div>⚠️ Screenshots are not allowed on this page.<br><br>
-        Please respect privacy and do not capture or share this content.<br><br>
-        <button id='dismissScreenshotWarning'>OK</button></div>
-      `;
-      document.body.appendChild(overlay);
-      document.getElementById('dismissScreenshotWarning').onclick = function() {
-        overlay.style.opacity = '0';
-        setTimeout(() => overlay.remove(), 300);
-      };
-    }
-    // Show warning on PrintScreen (desktop)
-    document.addEventListener('keyup', function(e) {
-      if (e.key === 'PrintScreen') {
-        showScreenshotWarning();
-      }
-    });
-    // Show warning on context menu or long-press on image/overlay (desktop & mobile)
-    function imageWarningHandler(e) {
-
-      showScreenshotWarning();
-      e.preventDefault();
-      e.stopPropagation();
-
-    }
-    document.querySelector('.cake-image').addEventListener('contextmenu', imageWarningHandler);
-    document.querySelector('.cake-image-overlay').addEventListener('contextmenu', imageWarningHandler);
-    document.querySelector('.cake-image').addEventListener('touchstart', function(e) {
-      if (e.touches && e.touches.length === 1) {
-        this._touchTimer = setTimeout(() => showScreenshotWarning(), 600);
-      }
-    });
-    document.querySelector('.cake-image').addEventListener('touchend', function() {
-      clearTimeout(this._touchTimer);
-    });
-    document.querySelector('.cake-image-overlay').addEventListener('touchstart', function(e) {
-      if (e.touches && e.touches.length === 1) {
-        this._touchTimer = setTimeout(() => showScreenshotWarning(), 600);
-      }
-    });
-    document.querySelector('.cake-image-overlay').addEventListener('touchend', function() {
-      clearTimeout(this._touchTimer);
+    document.querySelectorAll('.balloon').forEach(b => {
+      b.addEventListener('click', burstBalloon);
+      b.addEventListener('touchstart', burstBalloon, {passive:true});
     });
   </script>
 </body>
-
-
 </html>
