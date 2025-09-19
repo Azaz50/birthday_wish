@@ -29,7 +29,14 @@
     @keyframes twinkle{ from{transform:translateY(0)} to{transform:translateY(-40px)} }
     header{text-align:center; padding:18px 14px 6px}
     .title{font-family:'Pacifico', cursive; font-size: clamp(26px, 7vw, 52px); margin:0; color:#fff; text-shadow: var(--neon-primary);}
-    .subtitle{margin:6px 0 0; font-weight:600; color:var(--accent); font-size: clamp(14px, 3.8vw, 20px); text-shadow: var(--neon-accent);}
+    /* .subtitle{margin:6px 0 0; font-weight:600; color:var(--accent); font-size: clamp(14px, 3.8vw, 20px); text-shadow: var(--neon-secondary);} */
+    .subtitle{
+      margin:6px 0 0; font-weight:600; font-size: clamp(14px, 3.8vw, 20px);
+      background: linear-gradient(90deg, #fff, #60a5fa, rgb(218, 61, 61), #a78bfa);
+      -webkit-background-clip: text; background-clip: text;
+      color: #fff;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+    }
 
     .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; max-width:1100px; margin:12px auto; padding: 0 18px;}
     @media (max-width:900px){ .hero{grid-template-columns:1fr; text-align:center} }
@@ -54,10 +61,6 @@
     .b4{ left:62%; animation-duration: 12s}
     .b5{ left:80%; animation-duration: 13s}
     .b6{ left:8%; animation-duration: 15s}
-    .b7{ left:35%; animation-duration: 17s}
-    .b8{ left:70%; animation-duration: 19s}
-    .b9{ left:65%; animation-duration: 21s}
-    .b10{ left:95%; animation-duration: 23s}
     @keyframes float { 0%{ transform: translateY(0) } 100%{ transform: translateY(-120vh) } }
 
     .controls{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
@@ -121,7 +124,7 @@
 <body>
   <div class="stars" aria-hidden="true"></div>
   <header>
-    <h1 class="title">Happy Birthday, <span style="color:var(--primary)">Zeenat</span> 🎉</h1>
+    <h1 class="title">Happy Birthday, Zeenat 🎉</h1>
     <p class="subtitle">To my Bestie — with love 💖</p>
   </header>
 
@@ -137,6 +140,7 @@
         <div class="balloon b3" aria-hidden="true">🎈</div>
         <div class="balloon b4" aria-hidden="true">🎈</div>
         <div class="balloon b5" aria-hidden="true">🎈</div>
+        <div class="balloon b6" aria-hidden="true">🎈</div>
 
 
         <!-- Cake (SVG) -->
@@ -209,7 +213,7 @@
   </main>
 
   <canvas id="confetti"></canvas>
-  <footer>Made with ❤️ for Zeenat • Tap/Click anywhere to pop hearts</footer>
+  <footer class="type">Made with ❤️ for Zeenat • Tap/Click anywhere to pop hearts</footer>
 
   <script>
     /* ==================================================
