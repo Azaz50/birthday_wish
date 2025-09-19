@@ -68,8 +68,9 @@
     .btn.ghost{ background:transparent; color:var(--text-light); border:1px solid var(--accent); box-shadow: none; }
 
     .message.card{ margin-top:12px; box-shadow: var(--neon-primary), inset 0 0 12px #ff3b7b44; border-color: #ff3b7b88; }
+    .message.card h2 { text-shadow: 0 0 4px #fff, 0 0 12px #fff; }
     .type{font-size: clamp(15px, 1.9vw, 18px); line-height:1.7; min-height:80px; white-space:pre-wrap; color: #fff; text-shadow: 0 0 4px #fff, 0 0 12px #fff, 0 0 24px #fff;}
-    .tag{ display:inline-block; padding:6px 10px; background:transparent; border:1px dashed var(--accent); border-radius: 999px; font-size:12px; margin-top:10px; }
+    .tag{ display:inline-block; padding:6px 10px; background:transparent; border:1px dashed var(--accent); border-radius: 999px; font-size:12px; margin-top:10px; color: #fff; text-shadow: 0 0 2px #fff, 0 0 8px #fff; }
 
     canvas#confetti{ position:fixed; inset:0; pointer-events:none }
 
@@ -193,10 +194,10 @@
 
       <div class="controls" role="region" aria-label="Cake controls">
         <button class="btn" id="lightBtn" aria-pressed="false">🕯️ Light Candle</button>
-        <button class="btn" id="soundBtn">🔊 Play Wish</button>
-        <button class="btn secondary" id="confettiBtn">🎊 Confetti</button>
+        <button class="btn secondary" id="soundBtn">🔊 Play Wish</button>
+        <button class="btn" id="confettiBtn">🎊 Confetti</button>
         <button class="btn secondary" id="blowBtn">🌬️ Make a Wish</button>
-        <button class="btn" id="stopSoundBtn">⏹️ Stop</button>
+        <button class="btn secondary" id="stopSoundBtn">⏹️ Stop</button>
       </div>
     </section>
 
